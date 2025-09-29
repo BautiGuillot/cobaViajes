@@ -4,16 +4,7 @@ import PaqueteDetalle from "../components/PaqueteDetalle.jsx";
 
 const API_URL = import.meta.env.PUBLIC_API_URL;
 const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
-
-// Obtener el ID del paquete desde la URL
-const url = new URL(Astro.request.url);
-const id = url.searchParams.get('id');
-
-// Título dinámico basado en el ID
-const title = id ? `Paquete ${id} - Coba Viajes` : "Detalle del paquete - Coba Viajes";
-const description = id ? `Descubre los detalles del paquete ${id} con Coba Viajes` : "Descubre los detalles de nuestros paquetes turísticos";
-const keywords = "paquete turístico, viajes, vacaciones, destino, Coba Viajes";
 ---
-<BaseLayout title={title} description={description} keywords={keywords}>
+<BaseLayout title="Detalle del paquete - Coba Viajes" description="Descubre los detalles de nuestros paquetes turísticos" keywords="paquete turístico, viajes, vacaciones, destino, Coba Viajes">
   <PaqueteDetalle client:load apiUrl={API_URL} dominio={DOMINIO} />
 </BaseLayout>
