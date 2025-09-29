@@ -1,16 +1,21 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/HeroSection.jsx";
+import SearchForm from "../components/SearchForm.jsx";
+import PaquetesGrid from "../components/PaquetesGrid.jsx";
+import FeaturesSection from "../components/FeaturesSection.jsx";
 
+const API_URL = import.meta.env.PUBLIC_API_URL;
+const DOMINIO = import.meta.env.PUBLIC_DOMINIO; // opcional, si no se usa se detecta window.location.hostname
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Coba Viajes - Tu aventura comienza aquí">
+  <HeroSection client:load />
+  
+  <SearchForm client:load />
+  
+  <section id="paquetes" class="py-16 bg-gray-50">
+    <PaquetesGrid client:load apiUrl={API_URL} dominio={DOMINIO} />
+  </section>
+  
+  <FeaturesSection client:load />
+</BaseLayout>
