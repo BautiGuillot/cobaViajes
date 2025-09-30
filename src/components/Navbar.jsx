@@ -28,17 +28,24 @@ export default function Navbar() {
                 Inicio
               </a>
               <a
-                href="/destinos"
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                Destinos
-              </a>
-              <a
-                href="/"
+                href="/paquetes"
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Paquetes
               </a>
+              <a
+                href="/cruceros"
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+              >
+                Cruceros
+              </a>
+              <a
+                href="/circuito"
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+              >
+                Circuito Personalizado
+              </a>
+              
               <a
                 href="/nosotros"
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
@@ -92,16 +99,22 @@ export default function Navbar() {
                 Inicio
               </a>
               <a
-                href="/destinos"
+                href="/paquetes"
                 className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
               >
                 Destinos
               </a>
               <a
-                href="/"
+                href="/cruceros"
                 className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
               >
                 Paquetes
+              </a>
+              <a
+                href="/circuito"
+                className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+              >
+                Circuito Personalizado
               </a>
               <a
                 href="/nosotros"
