@@ -20,7 +20,24 @@ export default function SearchForm() {
     // Aquí iría la lógica para procesar la búsqueda
     console.log('Búsqueda:', searchData);
     // Redirigir a la página de resultados con los parámetros
-    const params = new URLSearchParams(searchData);
+    const cleanedSearchData = Object.entries(searchData).reduce((acc, [key, value]) => {
+      if (typeof value !== 'string') {
+        return value ? { ...acc, [key]: value } : acc;
+      }
+
+      const normalizedValue = value.trim().replace(/\s+/g, ' ');
+
+      if (!normalizedValue) {
+        return acc;
+      }
+
+      return {
+        ...acc,
+        [key]: normalizedValue
+      };
+    }, {});
+
+    const params = new URLSearchParams(cleanedSearchData);
     window.location.href = `/paquetes?${params.toString()}`;
   };
 
