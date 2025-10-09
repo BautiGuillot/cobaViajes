@@ -10,9 +10,13 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
   const aplicarFiltros = (paquetes, filtros) => {
     return paquetes.filter(paquete => {
       // Filtro por destino (string)
-      if (filtros.destino && paquete.destino) {
+      const destinoFiltroNormalizado = typeof filtros.destino === 'string'
+        ? filtros.destino.trim()
+        : filtros.destino;
+
+      if (destinoFiltroNormalizado && paquete.destino) {
         const destinoPaquete = paquete.destino.toLowerCase();
-        const destinoFiltro = filtros.destino.toLowerCase();
+        const destinoFiltro = destinoFiltroNormalizado.toLowerCase();
         if (!destinoPaquete.includes(destinoFiltro)) {
           return false;
         }
@@ -48,10 +52,17 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
     const urlParams = new URLSearchParams(window.location.search);
     const filtros = {};
     
-    if (urlParams.get('destino')) filtros.destino = urlParams.get('destino');
-    if (urlParams.get('fechaSalida')) filtros.fechaSalida = urlParams.get('fechaSalida');
-    if (urlParams.get('fechaRegreso')) filtros.fechaRegreso = urlParams.get('fechaRegreso');
-    
+    const destinoParam = urlParams.get('destino');
+    const fechaSalidaParam = urlParams.get('fechaSalida');
+    const fechaRegresoParam = urlParams.get('fechaRegreso');
+
+    if (destinoParam) {
+      const destinoNormalizado = destinoParam.trim().replace(/\s+/g, ' ');
+      if (destinoNormalizado) filtros.destino = destinoNormalizado;
+    }
+    if (fechaSalidaParam) filtros.fechaSalida = fechaSalidaParam.trim();
+    if (fechaRegresoParam) filtros.fechaRegreso = fechaRegresoParam.trim();
+
     return filtros;
   };
 
