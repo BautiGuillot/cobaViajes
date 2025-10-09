@@ -4,8 +4,7 @@ export default function SearchForm() {
   const [searchData, setSearchData] = useState({
     destino: '',
     fechaSalida: '',
-    fechaRegreso: '',
-    viajeros: '1'
+    fechaRegreso: ''
   });
 
   const handleInputChange = (e) => {
@@ -34,24 +33,17 @@ export default function SearchForm() {
         </div>
         
         <div className="bg-gray-50 rounded-2xl p-8 shadow-lg">
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Destino</label>
-              <select 
+              <input 
+                type="text"
                 name="destino"
                 value={searchData.destino}
                 onChange={handleInputChange}
+                placeholder="Ej: México, Europa, Asia..."
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                <option value="">Seleccionar destino</option>
-                <option value="mexico">México</option>
-                <option value="peru">Perú</option>
-                <option value="europa">Europa</option>
-                <option value="asia">Asia</option>
-                <option value="africa">África</option>
-                <option value="america-del-sur">América del Sur</option>
-                <option value="caribe">Caribe</option>
-              </select>
+              />
             </div>
             
             <div>
@@ -76,23 +68,7 @@ export default function SearchForm() {
               />
             </div>
             
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Viajeros</label>
-              <select 
-                name="viajeros"
-                value={searchData.viajeros}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                <option value="1">1 persona</option>
-                <option value="2">2 personas</option>
-                <option value="3">3 personas</option>
-                <option value="4">4 personas</option>
-                <option value="5">5+ personas</option>
-              </select>
-            </div>
-            
-            <div className="md:col-span-2 lg:col-span-4 flex justify-center mt-4">
+            <div className="md:col-span-2 lg:col-span-3 flex justify-center mt-4">
               <button 
                 type="submit"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center"

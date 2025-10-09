@@ -1,16 +1,65 @@
 import { useState } from "react";
 
 export default function Footer() {
+  const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleNewsletterSubmit = (e) => {
+  const API_URL = import.meta.env.PUBLIC_API_URL;
+  const ENV_DOMINIO = import.meta.env.PUBLIC_DOMINIO;
+
+  const buildApiUrl = (dominio) => {
+    const base = API_URL ? API_URL.replace(/\/$/, "") : "";
+    return `${base}/api/public/${dominio}/newsletter/suscribir`;
+  };
+
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    // Aquí iría la lógica para suscribir al newsletter
-    console.log("Email suscrito:", email);
-    setIsSubscribed(true);
-    setEmail("");
-    setTimeout(() => setIsSubscribed(false), 3000);
+    setErrorMessage("");
+
+    if (!nombre.trim()) {
+      setErrorMessage("Por favor ingresa tu nombre.");
+      return;
+    }
+
+    if (!email) {
+      setErrorMessage("Por favor ingresa un email válido.");
+      return;
+    }
+
+    const dominio = ENV_DOMINIO || (typeof window !== "undefined" ? window.location.hostname : "");
+    if (!dominio) {
+      setErrorMessage("No se pudo determinar el dominio.");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      const response = await fetch(buildApiUrl(dominio), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ nombre: nombre.trim(), email }),
+      });
+
+      if (!response.ok) {
+        const text = await response.text().catch(() => "");
+        throw new Error(text || "No fue posible suscribirte.");
+      }
+
+      setIsSubscribed(true);
+      setNombre("");
+      setEmail("");
+      setTimeout(() => setIsSubscribed(false), 4000);
+    } catch (err) {
+      setErrorMessage(err?.message || "Ocurrió un error inesperado.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -121,24 +170,40 @@ export default function Footer() {
             <div>
               <h5 className="text-sm font-semibold mb-2">Newsletter</h5>
               <p className="text-gray-400 text-xs mb-3">Recibe ofertas exclusivas</p>
-              <form onSubmit={handleNewsletterSubmit} className="flex">
+              <form onSubmit={handleNewsletterSubmit} className="space-y-2">
+                {/* Honeypot */}
+                <input type="text" name="company" tabIndex="-1" autoComplete="off" className="hidden" aria-hidden="true" />
                 <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Tu email"
-                  className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-l-md text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  type="text"
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
+                  placeholder="Tu nombre"
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-r-md transition-colors duration-200"
-                >
-                  Suscribir
-                </button>
+                <div className="flex">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Tu email"
+                    className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-l-md text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-medium rounded-r-md transition-colors duration-200"
+                  >
+                    {isSubmitting ? "Enviando..." : "Suscribir"}
+                  </button>
+                </div>
               </form>
               {isSubscribed && (
                 <p className="text-green-400 text-xs mt-2">¡Te has suscrito exitosamente!</p>
+              )}
+              {errorMessage && (
+                <p className="text-red-400 text-xs mt-2">{errorMessage}</p>
               )}
             </div>
           </div>

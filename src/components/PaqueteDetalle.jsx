@@ -14,9 +14,12 @@ export default function PaqueteDetalle(props) {
         ? new URLSearchParams(window.location.search).get("id")
         : null);
 
-    if (!apiUrl || !hostname || !usedId) return;
+    const base = (apiUrl || "").replace(/\/+$/, "");
+    if (!base || !hostname || !usedId) return;
 
-    fetch(`${apiUrl}/api/public/paquetes/dominio/${hostname}/paquete/${usedId}`)
+    const safeHost = encodeURIComponent(hostname);
+    const safeId = encodeURIComponent(usedId);
+    fetch(`${base}/api/public/paquetes/dominio/${safeHost}/paquete/${safeId}`)
       .then((res) => res.json())
       .then((data) => setPaquete(data))
       .catch(() => setPaquete(null));

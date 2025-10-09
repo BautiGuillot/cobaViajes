@@ -2,13 +2,83 @@ import { useEffect, useState } from "react";
 
 export default function PaquetesGrid({ apiUrl, dominio }) {
   const [paquetes, setPaquetes] = useState([]);
+  const [paquetesFiltrados, setPaquetesFiltrados] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filtrosAplicados, setFiltrosAplicados] = useState({});
+
+  // Función para aplicar filtros
+  const aplicarFiltros = (paquetes, filtros) => {
+    return paquetes.filter(paquete => {
+      // Filtro por destino (string)
+      if (filtros.destino && paquete.destino) {
+        const destinoPaquete = paquete.destino.toLowerCase();
+        const destinoFiltro = filtros.destino.toLowerCase();
+        if (!destinoPaquete.includes(destinoFiltro)) {
+          return false;
+        }
+      }
+
+      // Filtro por fecha de salida
+      if (filtros.fechaSalida && paquete.fechaInicio) {
+        const fechaSalidaPaquete = new Date(paquete.fechaInicio);
+        const fechaSalidaFiltro = new Date(filtros.fechaSalida);
+        if (fechaSalidaPaquete < fechaSalidaFiltro) {
+          return false;
+        }
+      }
+
+      // Filtro por fecha de regreso
+      if (filtros.fechaRegreso && paquete.fechaFin) {
+        const fechaRegresoPaquete = new Date(paquete.fechaFin);
+        const fechaRegresoFiltro = new Date(filtros.fechaRegreso);
+        if (fechaRegresoPaquete > fechaRegresoFiltro) {
+          return false;
+        }
+      }
+
+
+      return true;
+    });
+  };
+
+  // Función para leer parámetros de URL
+  const leerParametrosURL = () => {
+    if (typeof window === "undefined") return {};
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const filtros = {};
+    
+    if (urlParams.get('destino')) filtros.destino = urlParams.get('destino');
+    if (urlParams.get('fechaSalida')) filtros.fechaSalida = urlParams.get('fechaSalida');
+    if (urlParams.get('fechaRegreso')) filtros.fechaRegreso = urlParams.get('fechaRegreso');
+    
+    return filtros;
+  };
 
   useEffect(() => {
-    const d = dominio || window.location.hostname;
-    fetch(`${apiUrl}/api/public/paquetes/agencia/dominio/${d}`)
+    const d = (dominio || window.location.hostname || "").toString();
+    const base = (apiUrl || "").replace(/\/+$/, "");
+    if (!base || !d) {
+      setLoading(false);
+      return;
+    }
+    
+    fetch(`${base}/api/public/paquetes/agencia/dominio/${encodeURIComponent(d)}`)
       .then((res) => res.json())
-      .then((data) => setPaquetes(data))
+      .then((data) => {
+        setPaquetes(data);
+        
+        // Aplicar filtros de URL si existen
+        const filtros = leerParametrosURL();
+        setFiltrosAplicados(filtros);
+        
+        if (Object.keys(filtros).length > 0) {
+          const filtrados = aplicarFiltros(data, filtros);
+          setPaquetesFiltrados(filtrados);
+        } else {
+          setPaquetesFiltrados(data);
+        }
+      })
       .finally(() => setLoading(false));
   }, [apiUrl, dominio]);
 
@@ -35,17 +105,69 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
     );
   }
 
+  if (!paquetesFiltrados.length && Object.keys(filtrosAplicados).length > 0) {
+    return (
+      <div className="text-center py-12">
+        <div className="text-gray-400 mb-4">
+          <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <h3 className="text-lg font-medium text-gray-900 mb-2">No se encontraron paquetes</h3>
+        <p className="text-gray-500 mb-4">No hay paquetes que coincidan con tus criterios de búsqueda.</p>
+        <a
+          href="/paquetes"
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200 transition-colors duration-200"
+        >
+          Ver todos los paquetes
+        </a>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Paquetes Destacados</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          {Object.keys(filtrosAplicados).length > 0 ? 'Resultados de Búsqueda' : 'Paquetes Destacados'}
+        </h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Descubre nuestras ofertas más populares con descuentos especiales
+          {Object.keys(filtrosAplicados).length > 0 
+            ? `Mostrando ${paquetesFiltrados.length} de ${paquetes.length} paquetes`
+            : 'Descubre nuestras ofertas más populares con descuentos especiales'
+          }
         </p>
+        
+        {/* Mostrar filtros aplicados */}
+        {Object.keys(filtrosAplicados).length > 0 && (
+          <div className="mt-4 flex flex-wrap justify-center gap-2">
+            {filtrosAplicados.destino && (
+              <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                Destino: {filtrosAplicados.destino}
+              </span>
+            )}
+            {filtrosAplicados.fechaSalida && (
+              <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                Salida: {new Date(filtrosAplicados.fechaSalida).toLocaleDateString('es-ES')}
+              </span>
+            )}
+            {filtrosAplicados.fechaRegreso && (
+              <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                Regreso: {new Date(filtrosAplicados.fechaRegreso).toLocaleDateString('es-ES')}
+              </span>
+            )}
+            <a
+              href="/paquetes"
+              className="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors"
+            >
+              Limpiar filtros
+            </a>
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {paquetes.map((p) => (
+        {paquetesFiltrados.map((p) => (
           <div key={p.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
             <a href={`/paquete?id=${p.id}`} className="block">
               {/* Imagen del paquete */}
