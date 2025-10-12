@@ -10,14 +10,14 @@ export default function HeroSection() {
       ></div>
       
       {/* Overlay con gradiente */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-800/70 to-blue-900/80"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-coba-charcoal/80 via-coba-teal/70 to-coba-royal/80"></div>
       
       {/* Contenido */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 text-center">
         <div className="animate-fade-in">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-lg">
             Descubre el Mundo con 
-            <span className="text-yellow-400 block md:inline"> Coba Viajes</span>
+            <span className="text-coba-yellow block md:inline"> Coba Viajes</span>
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl mb-6 max-w-4xl mx-auto text-white/90 drop-shadow-md leading-relaxed">
             Vive experiencias únicas con nuestros paquetes personalizados. Desde playas paradisíacas hasta aventuras en la montaña.
@@ -25,13 +25,13 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="#paquetes" 
-              className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="bg-coba-yellow hover:bg-coba-beige text-coba-charcoal px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Explorar Destinos
             </a>
             <a 
               href="/ofertas" 
-              className="border-2 border-white hover:bg-white hover:text-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="border-2 border-coba-cream hover:bg-coba-cream hover:text-coba-royal text-coba-cream px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Ver Ofertas Especiales
             </a>

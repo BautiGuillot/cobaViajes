@@ -1,0 +1,215 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Nosotros - Coba Viajes" description="Conoce a COBÁ Viajes y Turismo, tu agencia de confianza para hacer realidad tus sueños de viajar" keywords="agencia de viajes, COBÁ, turismo, Junín, Buenos Aires, paquetes turísticos">
+  <!-- Hero Section -->
+  <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
+    <!-- Imagen de fondo -->
+    <div 
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+    ></div>
+    
+    <!-- Overlay con gradiente -->
+    <div class="absolute inset-0 bg-gradient-to-br from-coba-charcoal/80 via-coba-teal/70 to-coba-royal/80"></div>
+    
+    <!-- Contenido -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 text-center">
+      <div class="animate-fade-in">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-coba-cream drop-shadow-lg">
+          Nosotros
+        </h1>
+        <p class="text-lg md:text-xl lg:text-2xl mb-6 max-w-4xl mx-auto text-coba-beige drop-shadow-md leading-relaxed">
+          Hace realidad tu sueño de viajar con COBÁ ✈️
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Información de la empresa -->
+  <section class="py-16 bg-coba-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Texto -->
+        <div>
+          <h2 class="text-3xl font-bold text-coba-charcoal mb-6">
+            Tu Agencia de Viajes de Confianza
+          </h2>
+          <p class="text-lg text-coba-teal mb-6 leading-relaxed">
+            En COBÁ Viajes y Turismo, llevamos más de 15 años creando experiencias de viaje únicas e inolvidables. 
+            Nuestro compromiso es hacer realidad tus sueños de conocer el mundo, ofreciendo paquetes personalizados 
+            que se adaptan a tus necesidades y presupuesto.
+          </p>
+          <p class="text-lg text-coba-teal mb-8 leading-relaxed">
+            Desde playas paradisíacas hasta aventuras en la montaña, desde monumentos históricos hasta destinos 
+            exóticos, trabajamos con los mejores proveedores para garantizar que cada viaje sea una experiencia 
+            extraordinaria.
+          </p>
+          
+          <!-- Información de contacto -->
+          <div class="bg-coba-beige p-6 rounded-2xl">
+            <h3 class="text-xl font-bold text-coba-charcoal mb-4">Información de Contacto</h3>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <span class="text-coba-royal mr-3">📍</span>
+                <span class="text-coba-teal">R. De Escalada 92, Junín (Bs As)</span>
+              </div>
+              <div class="flex items-center">
+                <span class="text-coba-royal mr-3">📲</span>
+                <a href="tel:+542364469157" class="text-coba-teal hover:text-coba-royal transition-colors">
+                  2364 46-9157
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imagen -->
+        <div class="relative">
+          <div 
+            class="h-96 rounded-2xl bg-cover bg-center bg-no-repeat shadow-2xl"
+            style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+          >
+            <div class="absolute inset-0 bg-gradient-to-t from-coba-charcoal/30 to-transparent rounded-2xl"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería de destinos -->
+  <section class="py-16 bg-coba-beige">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-coba-charcoal mb-4">
+          Destinos que Inspiran
+        </h2>
+        <p class="text-lg text-coba-teal max-w-2xl mx-auto">
+          Descubre algunos de los destinos más increíbles que podemos ofrecerte
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Playas paradisíacas -->
+        <div class="relative group">
+          <div 
+            class="h-64 rounded-2xl bg-cover bg-center bg-no-repeat shadow-lg group-hover:shadow-2xl transition-all duration-300"
+            style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+          >
+            <div class="absolute inset-0 bg-gradient-to-t from-coba-charcoal/70 to-transparent rounded-2xl"></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="text-xl font-bold text-coba-cream mb-2">Playas Paradisíacas</h3>
+              <p class="text-coba-beige text-sm">Arena blanca y aguas cristalinas te esperan</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Monumentos históricos -->
+        <div class="relative group">
+          <div 
+            class="h-64 rounded-2xl bg-cover bg-center bg-no-repeat shadow-lg group-hover:shadow-2xl transition-all duration-300"
+            style="background-image: url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+          >
+            <div class="absolute inset-0 bg-gradient-to-t from-coba-charcoal/70 to-transparent rounded-2xl"></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="text-xl font-bold text-coba-cream mb-2">Monumentos Históricos</h3>
+              <p class="text-coba-beige text-sm">Sumérgete en la historia y cultura mundial</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Puentes icónicos -->
+        <div class="relative group">
+          <div 
+            class="h-64 rounded-2xl bg-cover bg-center bg-no-repeat shadow-lg group-hover:shadow-2xl transition-all duration-300"
+            style="background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+          >
+            <div class="absolute inset-0 bg-gradient-to-t from-coba-charcoal/70 to-transparent rounded-2xl"></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="text-xl font-bold text-coba-cream mb-2">Ciudades Emblemáticas</h3>
+              <p class="text-coba-beige text-sm">Explora las metrópolis más fascinantes del mundo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valores y compromiso -->
+  <section class="py-16 bg-coba-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-coba-charcoal mb-4">
+          Nuestros Valores
+        </h2>
+        <p class="text-lg text-coba-teal max-w-2xl mx-auto">
+          Los principios que guían cada experiencia que creamos
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Confianza -->
+        <div class="text-center p-6 bg-coba-beige rounded-2xl">
+          <div class="w-16 h-16 bg-coba-yellow rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">🤝</span>
+          </div>
+          <h3 class="text-xl font-bold text-coba-charcoal mb-3">Confianza</h3>
+          <p class="text-coba-teal">
+            Más de 15 años de experiencia garantizan un servicio confiable y de calidad
+          </p>
+        </div>
+
+        <!-- Personalización -->
+        <div class="text-center p-6 bg-coba-beige rounded-2xl">
+          <div class="w-16 h-16 bg-coba-yellow rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">✨</span>
+          </div>
+          <h3 class="text-xl font-bold text-coba-charcoal mb-3">Personalización</h3>
+          <p class="text-coba-teal">
+            Cada viaje se adapta a tus necesidades, gustos y presupuesto específico
+          </p>
+        </div>
+
+        <!-- Experiencia -->
+        <div class="text-center p-6 bg-coba-beige rounded-2xl">
+          <div class="w-16 h-16 bg-coba-yellow rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">🌟</span>
+          </div>
+          <h3 class="text-xl font-bold text-coba-charcoal mb-3">Experiencia</h3>
+          <p class="text-coba-teal">
+            Creamos momentos únicos e inolvidables que perdurarán para siempre
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-gradient-to-br from-coba-teal via-coba-royal to-coba-charcoal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-coba-cream mb-4">
+        ¿Listo para tu próxima aventura?
+      </h2>
+      <p class="text-lg text-coba-beige mb-8 max-w-2xl mx-auto">
+        Contactanos hoy mismo y comencemos a planificar el viaje de tus sueños
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola, quiero cotizar un viaje ✈️')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-coba-yellow hover:bg-coba-beige text-coba-charcoal px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+        >
+          Cotizar por WhatsApp
+        </a>
+        <a 
+          href="tel:+542364469157"
+          class="border-2 border-coba-cream hover:bg-coba-cream hover:text-coba-royal text-coba-cream px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+        >
+          Llamar Ahora
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

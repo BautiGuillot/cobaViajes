@@ -125,21 +125,21 @@ ${formData.observaciones || 'Ninguna'}
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-8">
+    <div className="bg-coba-cream rounded-2xl shadow-xl p-8">
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Datos Personales */}
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Datos Personales</h3>
+          <h3 className="text-xl font-semibold text-coba-charcoal mb-4">Datos Personales</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Nombre completo *</label>
+              <label className="block text-sm font-medium text-coba-charcoal mb-2">Nombre completo *</label>
               <input
                 type="text"
                 name="nombre"
                 value={formData.nombre}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-coba-cream text-coba-charcoal placeholder-coba-teal"
                 placeholder="Tu nombre completo"
               />
             </div>
@@ -151,7 +151,7 @@ ${formData.observaciones || 'Ninguna'}
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-coba-cream text-coba-charcoal placeholder-coba-teal"
                 placeholder="tu@email.com"
               />
             </div>
@@ -162,7 +162,7 @@ ${formData.observaciones || 'Ninguna'}
                 name="telefono"
                 value={formData.telefono}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-coba-cream text-coba-charcoal placeholder-coba-teal"
                 placeholder="+54 9 11 1234-5678"
               />
             </div>
@@ -180,7 +180,7 @@ ${formData.observaciones || 'Ninguna'}
                 name="fechaInicio"
                 value={formData.fechaInicio}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-coba-cream text-coba-charcoal placeholder-coba-teal"
               />
             </div>
             <div>
@@ -190,7 +190,7 @@ ${formData.observaciones || 'Ninguna'}
                 name="fechaFin"
                 value={formData.fechaFin}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-coba-cream text-coba-charcoal placeholder-coba-teal"
               />
             </div>
             <div>
@@ -201,7 +201,7 @@ ${formData.observaciones || 'Ninguna'}
                 value={formData.diasDisponibles}
                 onChange={handleInputChange}
                 min="1"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-coba-cream text-coba-charcoal placeholder-coba-teal"
                 placeholder="Ej: 15"
               />
             </div>
@@ -218,7 +218,7 @@ ${formData.observaciones || 'Ninguna'}
                 name="viajeros"
                 value={formData.viajeros}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-coba-cream text-coba-charcoal placeholder-coba-teal"
               >
                 <option value="1">1 persona</option>
                 <option value="2">2 personas</option>
@@ -238,7 +238,7 @@ ${formData.observaciones || 'Ninguna'}
                 name="presupuesto"
                 value={formData.presupuesto}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-coba-cream text-coba-charcoal placeholder-coba-teal"
               >
                 <option value="">Seleccionar rango</option>
                 <option value="Menos de $2,000">Menos de $2,000</option>
@@ -305,7 +305,7 @@ ${formData.observaciones || 'Ninguna'}
                 name="tipoAlojamiento"
                 value={formData.tipoAlojamiento}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-coba-cream text-coba-charcoal placeholder-coba-teal"
               >
                 <option value="">Seleccionar</option>
                 <option value="Hotel 3 estrellas">Hotel 3 estrellas</option>
@@ -323,7 +323,7 @@ ${formData.observaciones || 'Ninguna'}
                 name="tipoTransporte"
                 value={formData.tipoTransporte}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-coba-cream text-coba-charcoal placeholder-coba-teal"
               >
                 <option value="">Seleccionar</option>
                 <option value="Económico">Económico</option>

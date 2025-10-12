@@ -8,13 +8,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-coba-cream shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-blue-600">Coba Viajes</span>
+              <span className="text-2xl font-bold text-coba-royal">Coba Viajes</span>
             </a>
           </div>
 
@@ -23,38 +23,38 @@ export default function Navbar() {
             <div className="ml-10 flex items-baseline space-x-4">
               <a
                 href="/"
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="text-coba-charcoal hover:text-coba-royal px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Inicio
               </a>
               <a
                 href="/paquetes"
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="text-coba-charcoal hover:text-coba-royal px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Paquetes
               </a>
               <a
                 href="/cruceros"
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="text-coba-charcoal hover:text-coba-royal px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Cruceros
               </a>
               <a
                 href="/circuito"
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="text-coba-charcoal hover:text-coba-royal px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Circuito Personalizado
               </a>
               
               <a
                 href="/nosotros"
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="text-coba-charcoal hover:text-coba-royal px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Nosotros
               </a>
               <a
                 href="/contacto"
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="text-coba-charcoal hover:text-coba-royal px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Contacto
               </a>
@@ -67,7 +67,7 @@ export default function Navbar() {
               href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola, quiero cotizar un viaje ✈️')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+              className="bg-coba-teal hover:bg-coba-royal text-coba-cream px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
             >
               Cotizar por WhatsApp
             </a>
@@ -77,7 +77,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600"
+              className="text-coba-charcoal hover:text-coba-royal focus:outline-none focus:text-coba-royal"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isMenuOpen ? (
@@ -93,40 +93,40 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-coba-cream border-t border-coba-beige">
               <a
                 href="/"
-                className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-coba-charcoal hover:text-coba-royal block px-3 py-2 rounded-md text-base font-medium"
               >
                 Inicio
               </a>
               <a
                 href="/paquetes"
-                className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-coba-charcoal hover:text-coba-royal block px-3 py-2 rounded-md text-base font-medium"
               >
                 Destinos
               </a>
               <a
                 href="/cruceros"
-                className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-coba-charcoal hover:text-coba-royal block px-3 py-2 rounded-md text-base font-medium"
               >
                 Paquetes
               </a>
               <a
                 href="/circuito"
-                className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-coba-charcoal hover:text-coba-royal block px-3 py-2 rounded-md text-base font-medium"
               >
                 Circuito Personalizado
               </a>
               <a
                 href="/nosotros"
-                className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-coba-charcoal hover:text-coba-royal block px-3 py-2 rounded-md text-base font-medium"
               >
                 Nosotros
               </a>
               <a
                 href="/contacto"
-                className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-coba-charcoal hover:text-coba-royal block px-3 py-2 rounded-md text-base font-medium"
               >
                 Contacto
               </a>
@@ -134,7 +134,7 @@ export default function Navbar() {
                 href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola, quiero cotizar un viaje ✈️')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-600 hover:bg-green-700 text-white block px-3 py-2 rounded-md text-base font-medium mt-4"
+                className="bg-coba-teal hover:bg-coba-royal text-coba-cream block px-3 py-2 rounded-md text-base font-medium mt-4"
               >
                 Cotizar por WhatsApp
               </a>

@@ -7,11 +7,29 @@ const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
 ---
 
 <BaseLayout title="Paquetes - Coba Viajes">
-  <section class="py-16 bg-gray-50">
+  <section class="py-16 bg-coba-cream">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Paquetes de Viaje</h1>
-        <p class="text-lg text-gray-600">Descubre todas nuestras ofertas disponibles</p>
+      <!-- Título con imagen de fondo -->
+      <div class="relative mb-16">
+        <div 
+          class="relative h-64 rounded-2xl overflow-hidden bg-cover bg-center bg-no-repeat shadow-2xl"
+          style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+        >
+          <!-- Overlay con gradiente usando colores COBÁ -->
+          <div class="absolute inset-0 bg-gradient-to-br from-coba-charcoal/70 via-coba-teal/60 to-coba-royal/70"></div>
+          
+          <!-- Contenido del título -->
+          <div class="relative z-10 flex items-center justify-center h-full">
+            <div class="text-center">
+              <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-coba-cream mb-4 drop-shadow-lg">
+                Paquetes de Viaje
+              </h1>
+              <p class="text-lg md:text-xl text-coba-beige drop-shadow-md max-w-2xl mx-auto">
+                Descubre todas nuestras ofertas disponibles para crear experiencias inolvidables
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       
       <PaquetesGrid client:load apiUrl={API_URL} dominio={DOMINIO} />

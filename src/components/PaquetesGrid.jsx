@@ -96,8 +96,8 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-        <span className="ml-3 text-gray-600">Cargando paquetes...</span>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-coba-royal"></div>
+        <span className="ml-3 text-coba-charcoal">Cargando paquetes...</span>
       </div>
     );
   }
@@ -110,8 +110,8 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-1.009-5.824-2.709M15 6.5a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
         </div>
-        <h3 className="text-lg font-medium text-gray-900 mb-2">No hay paquetes disponibles</h3>
-        <p className="text-gray-500">Pronto tendremos increíbles ofertas para ti.</p>
+        <h3 className="text-lg font-medium text-coba-charcoal mb-2">No hay paquetes disponibles</h3>
+        <p className="text-coba-teal">Pronto tendremos increíbles ofertas para ti.</p>
       </div>
     );
   }
@@ -124,11 +124,11 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </div>
-        <h3 className="text-lg font-medium text-gray-900 mb-2">No se encontraron paquetes</h3>
-        <p className="text-gray-500 mb-4">No hay paquetes que coincidan con tus criterios de búsqueda.</p>
+        <h3 className="text-lg font-medium text-coba-charcoal mb-2">No se encontraron paquetes</h3>
+        <p className="text-coba-teal mb-4">No hay paquetes que coincidan con tus criterios de búsqueda.</p>
         <a
           href="/paquetes"
-          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200 transition-colors duration-200"
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-coba-royal bg-coba-yellow hover:bg-coba-beige transition-colors duration-200"
         >
           Ver todos los paquetes
         </a>
@@ -139,10 +139,10 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+        <h2 className="text-3xl font-bold text-coba-charcoal mb-4">
           {Object.keys(filtrosAplicados).length > 0 ? 'Resultados de Búsqueda' : 'Paquetes Destacados'}
         </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-coba-teal max-w-2xl mx-auto">
           {Object.keys(filtrosAplicados).length > 0 
             ? `Mostrando ${paquetesFiltrados.length} de ${paquetes.length} paquetes`
             : 'Descubre nuestras ofertas más populares con descuentos especiales'
@@ -153,23 +153,23 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
         {Object.keys(filtrosAplicados).length > 0 && (
           <div className="mt-4 flex flex-wrap justify-center gap-2">
             {filtrosAplicados.destino && (
-              <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+              <span className="px-3 py-1 bg-coba-yellow text-coba-charcoal rounded-full text-sm">
                 Destino: {filtrosAplicados.destino}
               </span>
             )}
             {filtrosAplicados.fechaSalida && (
-              <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+              <span className="px-3 py-1 bg-coba-beige text-coba-teal rounded-full text-sm">
                 Salida: {new Date(filtrosAplicados.fechaSalida).toLocaleDateString('es-ES')}
               </span>
             )}
             {filtrosAplicados.fechaRegreso && (
-              <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+              <span className="px-3 py-1 bg-coba-beige text-coba-teal rounded-full text-sm">
                 Regreso: {new Date(filtrosAplicados.fechaRegreso).toLocaleDateString('es-ES')}
               </span>
             )}
             <a
               href="/paquetes"
-              className="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors"
+              className="px-3 py-1 bg-coba-cream text-coba-charcoal rounded-full text-sm hover:bg-coba-beige transition-colors"
             >
               Limpiar filtros
             </a>
@@ -179,10 +179,10 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {paquetesFiltrados.map((p) => (
-          <div key={p.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
+          <div key={p.id} className="bg-coba-cream rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
             <a href={`/paquete?id=${p.id}`} className="block">
               {/* Imagen del paquete */}
-              <div className="relative h-64 bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 overflow-hidden">
+              <div className="relative h-64 bg-gradient-to-br from-coba-teal via-coba-royal to-coba-charcoal overflow-hidden">
                 {p.imagenUrl ? (
                   <img 
                     src={p.imagenUrl} 
@@ -200,12 +200,12 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
                 <div className="absolute inset-0 bg-black bg-opacity-20"></div>
                 {/* Badge de descuento si existe */}
                 {p.descuento && (
-                  <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                  <div className="absolute top-4 right-4 bg-coba-yellow text-coba-charcoal px-3 py-1 rounded-full text-sm font-bold shadow-lg">
                     {p.descuento}% OFF
                   </div>
                 )}
                 {/* Badge de fechas */}
-                <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                <div className="absolute bottom-4 left-4 bg-coba-cream bg-opacity-90 text-coba-charcoal px-3 py-1 rounded-full text-sm font-medium">
                   {p.fechaInicio ? new Date(p.fechaInicio).toLocaleDateString('es-ES', { month: 'short', day: 'numeric' }) : 'Próximamente'}
                 </div>
               </div>
@@ -213,16 +213,16 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
               {/* Contenido de la tarjeta */}
               <div className="p-6">
                 <div className="mb-3">
-                  <span className="text-sm text-blue-600 font-medium">{p.destino || 'Destino'}</span>
+                  <span className="text-sm text-coba-royal font-medium">{p.destino || 'Destino'}</span>
                 </div>
                 
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">
+                <h3 className="text-xl font-bold text-coba-charcoal mb-3 group-hover:text-coba-royal transition-colors duration-200 line-clamp-2">
                   {p.titulo}
                 </h3>
                 
                 <div className="flex items-center justify-end mb-4">
                   {p.fechaInicio && p.fechaFin && (
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm text-coba-teal">
                       <span>
                         {Math.ceil((new Date(p.fechaFin) - new Date(p.fechaInicio)) / (1000 * 60 * 60 * 24))} días
                       </span>
@@ -230,22 +230,22 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
                   )}
                 </div>
 
-                <p className="text-gray-600 text-sm mb-6 line-clamp-3 leading-relaxed">
+                <p className="text-coba-teal text-sm mb-6 line-clamp-3 leading-relaxed">
                   {p.descripcion}
                 </p>
 
                 
 
                 {/* Precio y botón */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                <div className="flex items-center justify-between pt-4 border-t border-coba-beige">
                   <div>
-                    <span className="block text-xs text-gray-500">Precio desde</span>
-                    <span className="text-2xl font-bold text-blue-600">
+                    <span className="block text-xs text-coba-teal">Precio desde</span>
+                    <span className="text-2xl font-bold text-coba-royal">
                       ${p.precio?.toLocaleString('es-ES') || '0'}
                     </span>
-                    <span className="text-sm text-gray-500 ml-1">por persona</span>
+                    <span className="text-sm text-coba-teal ml-1">por persona</span>
                   </div>
-                  <div className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg">
+                  <div className="bg-coba-royal hover:bg-coba-teal text-coba-cream px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg">
                     Ver Detalles
                   </div>
                 </div>
@@ -259,7 +259,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
       <div className="text-center mt-12">
         <a
           href="/paquetes"
-          className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
+          className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-coba-cream bg-coba-royal hover:bg-coba-teal transition-colors duration-200"
         >
           Ver Todos los Paquetes
           <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

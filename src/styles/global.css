@@ -7,6 +7,11 @@
   html {
     scroll-behavior: smooth;
   }
+  
+  body {
+    background-color: #FFFEF7; /* coba-cream */
+    color: #2C2C2C; /* coba-charcoal */
+  }
 }
 
 @layer components {

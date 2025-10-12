@@ -1,0 +1,372 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Contacto - Coba Viajes" description="Contacta con COBÁ Viajes y Turismo para hacer realidad tu próximo viaje. Ubicados en Junín, Buenos Aires" keywords="contacto, COBÁ Viajes, Junín, Buenos Aires, agencia de viajes, cotizar viaje">
+  <!-- Hero Section -->
+  <section class="relative h-[50vh] flex items-center justify-center overflow-hidden">
+    <!-- Imagen de fondo -->
+    <div 
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+    ></div>
+    
+    <!-- Overlay con gradiente -->
+    <div class="absolute inset-0 bg-gradient-to-br from-coba-charcoal/80 via-coba-teal/70 to-coba-royal/80"></div>
+    
+    <!-- Contenido -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 text-center">
+      <div class="animate-fade-in">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-coba-cream drop-shadow-lg">
+          Contacto
+        </h1>
+        <p class="text-lg md:text-xl lg:text-2xl mb-6 max-w-4xl mx-auto text-coba-beige drop-shadow-md leading-relaxed">
+          Estamos aquí para hacer realidad tu próximo viaje ✈️
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Información de contacto y formulario -->
+  <section class="py-16 bg-coba-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <!-- Información de contacto -->
+        <div>
+          <h2 class="text-3xl font-bold text-coba-charcoal mb-8">
+            Ponte en Contacto
+          </h2>
+          
+          <div class="space-y-6">
+            <!-- Teléfono -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-coba-yellow rounded-full flex items-center justify-center mr-4">
+                <span class="text-xl">📲</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-coba-charcoal mb-1">Teléfono</h3>
+                <a href="tel:+542364469157" class="text-coba-teal hover:text-coba-royal transition-colors text-lg">
+                  2364 46-9157
+                </a>
+                <p class="text-coba-teal text-sm mt-1">Lunes a Viernes: 9:00 - 18:00</p>
+              </div>
+            </div>
+
+            <!-- Dirección -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-coba-yellow rounded-full flex items-center justify-center mr-4">
+                <span class="text-xl">📍</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-coba-charcoal mb-1">Dirección</h3>
+                <p class="text-coba-teal">
+                  R. De Escalada 92<br>
+                  Junín, Buenos Aires
+                </p>
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-coba-yellow rounded-full flex items-center justify-center mr-4">
+                <span class="text-xl">💬</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-coba-charcoal mb-1">WhatsApp</h3>
+                <a 
+                  href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola, quiero cotizar un viaje ✈️')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-coba-teal hover:text-coba-royal transition-colors"
+                >
+                  Envíanos un mensaje
+                </a>
+                <p class="text-coba-teal text-sm mt-1">Respuesta rápida garantizada</p>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-coba-yellow rounded-full flex items-center justify-center mr-4">
+                <span class="text-xl">✉️</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-coba-charcoal mb-1">Email</h3>
+                <a href="mailto:info@cobaviajes.com" class="text-coba-teal hover:text-coba-royal transition-colors">
+                  info@cobaviajes.com
+                </a>
+                <p class="text-coba-teal text-sm mt-1">Te responderemos en 24 horas</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Horarios de atención -->
+          <div class="mt-8 p-6 bg-coba-beige rounded-2xl">
+            <h3 class="text-xl font-bold text-coba-charcoal mb-4">Horarios de Atención</h3>
+            <div class="space-y-2">
+              <div class="flex justify-between">
+                <span class="text-coba-teal">Lunes - Viernes</span>
+                <span class="text-coba-charcoal font-medium">9:00 - 18:00</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-coba-teal">Sábados</span>
+                <span class="text-coba-charcoal font-medium">9:00 - 13:00</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-coba-teal">Domingos</span>
+                <span class="text-coba-charcoal font-medium">Cerrado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario de contacto -->
+        <div>
+          <div class="bg-coba-beige p-8 rounded-2xl shadow-lg">
+            <h2 class="text-2xl font-bold text-coba-charcoal mb-6">
+              Envíanos un Mensaje
+            </h2>
+            
+            <form class="space-y-6" id="contactForm">
+              <!-- Nombre -->
+              <div>
+                <label for="nombre" class="block text-sm font-medium text-coba-charcoal mb-2">
+                  Nombre Completo *
+                </label>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  required
+                  class="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent transition-colors bg-coba-cream text-coba-charcoal placeholder-coba-teal"
+                  placeholder="Tu nombre completo"
+                />
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label for="email" class="block text-sm font-medium text-coba-charcoal mb-2">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent transition-colors bg-coba-cream text-coba-charcoal placeholder-coba-teal"
+                  placeholder="tu@email.com"
+                />
+              </div>
+
+              <!-- Teléfono -->
+              <div>
+                <label for="telefono" class="block text-sm font-medium text-coba-charcoal mb-2">
+                  Teléfono
+                </label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  class="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent transition-colors bg-coba-cream text-coba-charcoal placeholder-coba-teal"
+                  placeholder="(2364) 123-4567"
+                />
+              </div>
+
+              <!-- Tipo de consulta -->
+              <div>
+                <label for="consulta" class="block text-sm font-medium text-coba-charcoal mb-2">
+                  Tipo de Consulta *
+                </label>
+                <select
+                  id="consulta"
+                  name="consulta"
+                  required
+                  class="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent transition-colors bg-coba-cream text-coba-charcoal"
+                >
+                  <option value="">Selecciona una opción</option>
+                  <option value="cotizacion">Cotización de paquete</option>
+                  <option value="informacion">Información general</option>
+                  <option value="grupos">Viajes en grupo</option>
+                  <option value="corporativo">Viajes corporativos</option>
+                  <option value="luna-miel">Luna de miel</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <!-- Destino de interés -->
+              <div>
+                <label for="destino" class="block text-sm font-medium text-coba-charcoal mb-2">
+                  Destino de Interés
+                </label>
+                <input
+                  type="text"
+                  id="destino"
+                  name="destino"
+                  class="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent transition-colors bg-coba-cream text-coba-charcoal placeholder-coba-teal"
+                  placeholder="Ej: Cancún, Europa, Asia..."
+                />
+              </div>
+
+              <!-- Fecha de viaje -->
+              <div>
+                <label for="fecha" class="block text-sm font-medium text-coba-charcoal mb-2">
+                  Fecha Aproximada de Viaje
+                </label>
+                <input
+                  type="date"
+                  id="fecha"
+                  name="fecha"
+                  class="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent transition-colors bg-coba-cream text-coba-charcoal"
+                />
+              </div>
+
+              <!-- Mensaje -->
+              <div>
+                <label for="mensaje" class="block text-sm font-medium text-coba-charcoal mb-2">
+                  Mensaje *
+                </label>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  rows="4"
+                  required
+                  class="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent transition-colors bg-coba-cream text-coba-charcoal placeholder-coba-teal resize-none"
+                  placeholder="Cuéntanos más detalles sobre tu viaje ideal..."
+                ></textarea>
+              </div>
+
+              <!-- Botón de envío -->
+              <div class="flex flex-col sm:flex-row gap-4">
+                <button
+                  type="submit"
+                  class="flex-1 bg-coba-royal hover:bg-coba-teal text-coba-cream px-6 py-3 rounded-lg font-semibold transition-colors duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  Enviar Mensaje
+                </button>
+                <a
+                  href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola, quiero cotizar un viaje ✈️')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex-1 bg-coba-yellow hover:bg-coba-beige text-coba-charcoal px-6 py-3 rounded-lg font-semibold transition-colors duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl text-center"
+                >
+                  WhatsApp Directo
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mapa de ubicación -->
+  <section class="py-16 bg-coba-beige">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-coba-charcoal mb-4">
+          Nuestra Ubicación
+        </h2>
+        <p class="text-lg text-coba-teal max-w-2xl mx-auto">
+          Visítanos en nuestra oficina en el corazón de Junín
+        </p>
+      </div>
+
+      <div class="bg-coba-cream rounded-2xl overflow-hidden shadow-2xl">
+        <!-- Mapa placeholder - En producción se puede reemplazar con Google Maps -->
+        <div class="h-96 bg-gradient-to-br from-coba-teal to-coba-royal flex items-center justify-center">
+          <div class="text-center text-coba-cream">
+            <div class="w-16 h-16 bg-coba-yellow rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">📍</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">R. De Escalada 92</h3>
+            <p class="text-lg">Junín, Buenos Aires</p>
+            <p class="text-sm mt-2 opacity-90">Argentina</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información adicional del mapa -->
+      <div class="mt-8 text-center">
+        <p class="text-coba-teal mb-4">
+          <strong>¿Cómo llegar?</strong> Estamos ubicados en el centro de Junín, fácil acceso en transporte público y con estacionamiento disponible.
+        </p>
+        <a
+          href="https://maps.google.com/?q=R.+De+Escalada+92,+Junín,+Buenos+Aires"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-6 py-3 bg-coba-royal hover:bg-coba-teal text-coba-cream rounded-lg font-semibold transition-colors duration-200"
+        >
+          <span class="mr-2">🗺️</span>
+          Ver en Google Maps
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-gradient-to-br from-coba-teal via-coba-royal to-coba-charcoal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-coba-cream mb-4">
+        ¿Tienes Preguntas?
+      </h2>
+      <p class="text-lg text-coba-beige mb-8 max-w-2xl mx-auto">
+        Nuestro equipo está listo para ayudarte a planificar el viaje perfecto
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="tel:+542364469157"
+          class="bg-coba-yellow hover:bg-coba-beige text-coba-charcoal px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+        >
+          📞 Llamar Ahora
+        </a>
+        <a 
+          href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola, quiero cotizar un viaje ✈️')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border-2 border-coba-cream hover:bg-coba-cream hover:text-coba-royal text-coba-cream px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+        >
+          💬 WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Manejo del formulario de contacto
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contactForm');
+      
+      if (form && form instanceof HTMLFormElement) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Recopilar datos del formulario
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
+          
+          // Crear mensaje para WhatsApp
+          let mensaje = `Hola! Me contacto desde la web de COBÁ Viajes.\n\n`;
+          mensaje += `*Datos de contacto:*\n`;
+          mensaje += `• Nombre: ${data.nombre}\n`;
+          mensaje += `• Email: ${data.email}\n`;
+          if (data.telefono) mensaje += `• Teléfono: ${data.telefono}\n`;
+          mensaje += `• Tipo de consulta: ${data.consulta}\n`;
+          if (data.destino) mensaje += `• Destino de interés: ${data.destino}\n`;
+          if (data.fecha) mensaje += `• Fecha de viaje: ${data.fecha}\n`;
+          mensaje += `\n*Mensaje:*\n${data.mensaje}`;
+          
+          // Abrir WhatsApp con el mensaje
+          const whatsappUrl = `https://wa.me/2364379198?text=${encodeURIComponent(mensaje)}`;
+          window.open(whatsappUrl, '_blank');
+          
+          // Mostrar mensaje de confirmación
+          alert('¡Gracias por contactarnos! Te redirigimos a WhatsApp para completar tu consulta.');
+          
+          // Limpiar formulario
+          form.reset();
+        });
+      }
+    });
+  </script>
+</BaseLayout>
