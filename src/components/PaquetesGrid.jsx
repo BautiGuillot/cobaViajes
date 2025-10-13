@@ -183,9 +183,9 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
             <a href={`/paquete?id=${p.id}`} className="block">
               {/* Imagen del paquete */}
               <div className="relative h-64 bg-gradient-to-br from-coba-teal via-coba-royal to-coba-charcoal overflow-hidden">
-                {(p.imagenDestino || p.imagenUrl) ? (
+                {p.imagenDestino ? (
                   <img 
-                    src={p.imagenDestino || p.imagenUrl} 
+                    src={p.imagenDestino} 
                     alt={`Imagen del paquete ${p.titulo} - ${p.destino}`}
                     className="w-full h-full object-cover"
                     loading="lazy"

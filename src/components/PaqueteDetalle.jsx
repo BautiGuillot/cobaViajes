@@ -68,9 +68,9 @@ export default function PaqueteDetalle(props) {
       {/* Hero imagen */}
       <div className="rounded-2xl overflow-hidden shadow-lg mb-8">
         <div className="relative h-64 md:h-96 bg-coba-beige">
-          {(paquete.imagenDestino || paquete.imagenUrl) ? (
+          {paquete.imagenDestino ? (
             <img
-              src={paquete.imagenDestino || paquete.imagenUrl}
+              src={paquete.imagenDestino}
               alt={`Imagen del paquete ${paquete.titulo}`}
               className="w-full h-full object-cover"
               loading="eager"
@@ -150,6 +150,16 @@ export default function PaqueteDetalle(props) {
               </svg>
               Solicitar Presupuesto
             </a>
+            {paquete.urlHotel && (
+              <a
+                href={paquete.urlHotel}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 w-full inline-flex items-center justify-center px-4 py-3 rounded-lg border border-coba-royal text-coba-royal hover:bg-coba-royal hover:text-coba-cream font-medium transition-colors"
+              >
+                Ver hotel
+              </a>
+            )}
             <p className="text-xs text-coba-teal mt-3">Presupuesto sujeto a disponibilidad.</p>
           </div>
 
