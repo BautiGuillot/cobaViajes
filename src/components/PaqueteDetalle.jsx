@@ -68,9 +68,9 @@ export default function PaqueteDetalle(props) {
       {/* Hero imagen */}
       <div className="rounded-2xl overflow-hidden shadow-lg mb-8">
         <div className="relative h-64 md:h-96 bg-coba-beige">
-          {paquete.imagenUrl ? (
+          {(paquete.imagenDestino || paquete.imagenUrl) ? (
             <img
-              src={paquete.imagenUrl}
+              src={paquete.imagenDestino || paquete.imagenUrl}
               alt={`Imagen del paquete ${paquete.titulo}`}
               className="w-full h-full object-cover"
               loading="eager"
@@ -113,6 +113,19 @@ export default function PaqueteDetalle(props) {
           <div className="bg-coba-cream rounded-2xl shadow p-6 md:p-8">
             <h2 className="text-xl font-semibold text-coba-charcoal mb-4">Descripción</h2>
             <p className="text-coba-teal leading-relaxed whitespace-pre-line">{paquete.descripcion}</p>
+            {(paquete.imagenHotel) && (
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-coba-charcoal mb-3">Imagen del hotel</h3>
+                <div className="rounded-xl overflow-hidden shadow">
+                  <img
+                    src={paquete.imagenHotel}
+                    alt={`Hotel para el paquete ${paquete.titulo}`}
+                    className="w-full h-64 object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
