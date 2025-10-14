@@ -29,7 +29,7 @@ export default function PaqueteDetalle(props) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col items-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-coba-royal"></div>
-        <p className="mt-4 text-coba-teal">Cargando paquete...</p>
+        <p className="mt-4 text-gray-800">Cargando paquete...</p>
       </div>
     );
 
@@ -51,7 +51,7 @@ export default function PaqueteDetalle(props) {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
-      <nav className="text-sm text-coba-teal mb-4" aria-label="Breadcrumb">
+      <nav className="text-sm text-gray-800 mb-4" aria-label="Breadcrumb">
         <ol className="list-reset flex">
           <li>
             <a href="/" className="hover:text-coba-royal">Inicio</a>
@@ -76,7 +76,7 @@ export default function PaqueteDetalle(props) {
               loading="eager"
             />
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center text-coba-teal">
+            <div className="absolute inset-0 flex items-center justify-center text-gray-800">
               <svg className="w-20 h-20" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
               </svg>
@@ -112,7 +112,7 @@ export default function PaqueteDetalle(props) {
         <div className="lg:col-span-2">
           <div className="bg-coba-cream rounded-2xl shadow p-6 md:p-8">
             <h2 className="text-xl font-semibold text-coba-charcoal mb-4">Descripción</h2>
-            <p className="text-coba-teal leading-relaxed whitespace-pre-line">{paquete.descripcion}</p>
+            <p className="text-gray-800 leading-relaxed whitespace-pre-line">{paquete.descripcion}</p>
             {(paquete.imagenHotel) && (
               <div className="mt-6">
                 <h3 className="text-lg font-semibold text-coba-charcoal mb-3">Imagen del hotel</h3>
@@ -133,10 +133,10 @@ export default function PaqueteDetalle(props) {
         <aside className="lg:col-span-1">
           <div className="bg-coba-cream rounded-2xl shadow p-6 sticky top-4">
             <div className="mb-4">
-              <span className="block text-sm text-coba-teal mb-1">Desde</span>
+              <span className="block text-sm text-gray-800 mb-1">Desde</span>
               <div className="flex items-end gap-1">
                 <span className="text-3xl font-bold text-coba-royal">${precioFormateado}</span>
-                <span className="text-sm text-coba-teal mb-1">por persona</span>
+                <span className="text-sm text-gray-800 mb-1">por persona</span>
               </div>
             </div>
             <a
@@ -160,11 +160,11 @@ export default function PaqueteDetalle(props) {
                 Ver hotel
               </a>
             )}
-            <p className="text-xs text-coba-teal mt-3">Presupuesto sujeto a disponibilidad.</p>
+            <p className="text-xs text-gray-800 mt-3">Presupuesto sujeto a disponibilidad.</p>
           </div>
 
           <div className="mt-6 text-sm">
-            <a href="/" className="text-coba-teal hover:text-coba-royal">← Volver</a>
+            <a href="/" className="text-gray-800 hover:text-coba-royal">← Volver</a>
           </div>
         </aside>
       </div>

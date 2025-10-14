@@ -111,7 +111,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
           </svg>
         </div>
         <h3 className="text-lg font-medium text-coba-charcoal mb-2">No hay paquetes disponibles</h3>
-        <p className="text-coba-teal">Pronto tendremos increíbles ofertas para ti.</p>
+        <p className="text-gray-800">Pronto tendremos increíbles ofertas para ti.</p>
       </div>
     );
   }
@@ -125,7 +125,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
           </svg>
         </div>
         <h3 className="text-lg font-medium text-coba-charcoal mb-2">No se encontraron paquetes</h3>
-        <p className="text-coba-teal mb-4">No hay paquetes que coincidan con tus criterios de búsqueda.</p>
+        <p className="text-gray-800 mb-4">No hay paquetes que coincidan con tus criterios de búsqueda.</p>
         <a
           href="/paquetes"
           className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-coba-royal bg-coba-yellow hover:bg-coba-beige transition-colors duration-200"
@@ -142,7 +142,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
         <h2 className="text-3xl font-bold text-coba-charcoal mb-4">
           {Object.keys(filtrosAplicados).length > 0 ? 'Resultados de Búsqueda' : 'Paquetes Destacados'}
         </h2>
-        <p className="text-lg text-coba-teal max-w-2xl mx-auto">
+        <p className="text-lg text-gray-800 max-w-2xl mx-auto">
           {Object.keys(filtrosAplicados).length > 0 
             ? `Mostrando ${paquetesFiltrados.length} de ${paquetes.length} paquetes`
             : 'Descubre nuestras ofertas más populares con descuentos especiales'
@@ -158,12 +158,12 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
               </span>
             )}
             {filtrosAplicados.fechaSalida && (
-              <span className="px-3 py-1 bg-coba-beige text-coba-teal rounded-full text-sm">
+              <span className="px-3 py-1 bg-coba-beige text-gray-800 rounded-full text-sm">
                 Salida: {new Date(filtrosAplicados.fechaSalida).toLocaleDateString('es-ES')}
               </span>
             )}
             {filtrosAplicados.fechaRegreso && (
-              <span className="px-3 py-1 bg-coba-beige text-coba-teal rounded-full text-sm">
+              <span className="px-3 py-1 bg-coba-beige text-gray-800 rounded-full text-sm">
                 Regreso: {new Date(filtrosAplicados.fechaRegreso).toLocaleDateString('es-ES')}
               </span>
             )}
@@ -213,16 +213,16 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
               {/* Contenido de la tarjeta */}
               <div className="p-6">
                 <div className="mb-3">
-                  <span className="text-sm text-coba-teal font-medium">{p.destino || 'Destino'}</span>
+                  <span className="text-sm text-gray-800 font-medium">{p.destino || 'Destino'}</span>
                 </div>
                 
-                <h3 className="text-xl font-bold text-coba-charcoal mb-3 group-hover:text-coba-teal transition-colors duration-200 line-clamp-2">
+                <h3 className="text-xl font-bold text-coba-charcoal mb-3 group-hover:text-gray-800 transition-colors duration-200 line-clamp-2">
                   {p.titulo}
                 </h3>
                 
                 <div className="flex items-center justify-end mb-4">
                   {p.fechaInicio && p.fechaFin && (
-                    <div className="text-sm text-coba-teal">
+                    <div className="text-sm text-gray-800">
                       <span>
                         {Math.ceil((new Date(p.fechaFin) - new Date(p.fechaInicio)) / (1000 * 60 * 60 * 24))} días
                       </span>
@@ -230,7 +230,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
                   )}
                 </div>
 
-                <p className="text-coba-teal text-sm mb-6 line-clamp-3 leading-relaxed">
+                <p className="text-gray-800 text-sm mb-6 line-clamp-3 leading-relaxed">
                   {p.descripcion}
                 </p>
 
@@ -239,11 +239,11 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
                 {/* Precio y botón */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <div>
-                    <span className="block text-xs text-coba-teal">Precio desde</span>
+                    <span className="block text-xs text-gray-800">Precio desde</span>
                     <span className="text-2xl font-bold text-coba-charcoal">
                       ${p.precio?.toLocaleString('es-ES') || '0'}
                     </span>
-                    <span className="text-sm text-coba-teal ml-1">por persona</span>
+                    <span className="text-sm text-gray-800 ml-1">por persona</span>
                   </div>
                   <div className="bg-coba-teal hover:bg-coba-charcoal text-coba-cream px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg">
                     Ver Detalles

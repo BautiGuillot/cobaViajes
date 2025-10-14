@@ -46,7 +46,7 @@ export default function SearchForm() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-coba-charcoal mb-4">Encuentra tu Próxima Aventura</h2>
-          <p className="text-lg text-coba-teal">Busca entre cientos de destinos y encuentra el paquete perfecto para ti</p>
+          <p className="text-lg text-gray-800">Busca entre cientos de destinos y encuentra el paquete perfecto para ti</p>
         </div>
         
         <div className="bg-white rounded-2xl p-8 shadow-xl border border-coba-teal/20">

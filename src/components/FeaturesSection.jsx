@@ -13,14 +13,14 @@ export default function FeaturesSection() {
     },
     {
       icon: (
-        <svg className="w-8 h-8 text-coba-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
       title: "15 Años de Experiencia",
       description: "Reconocidos como la mejor agencia de viajes por 3 años consecutivos",
       bgColor: "bg-coba-cream",
-      iconColor: "text-coba-teal"
+      iconColor: "text-gray-800"
     },
     {
       icon: (
@@ -51,7 +51,7 @@ export default function FeaturesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-coba-charcoal mb-6">¿Por Qué Elegir Coba Viajes?</h2>
-          <p className="text-xl text-coba-teal max-w-3xl mx-auto">Somos tu mejor aliado para crear experiencias de viaje inolvidables con más de 15 años de experiencia</p>
+          <p className="text-xl text-gray-800 max-w-3xl mx-auto">Somos tu mejor aliado para crear experiencias de viaje inolvidables con más de 15 años de experiencia</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -62,10 +62,10 @@ export default function FeaturesSection() {
                   {feature.icon}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-coba-charcoal mb-3 group-hover:text-coba-teal transition-colors duration-200">
+                  <h3 className="text-2xl font-bold text-coba-charcoal mb-3 group-hover:text-gray-800 transition-colors duration-200">
                     {feature.title}
                   </h3>
-                  <p className="text-coba-teal text-lg leading-relaxed">
+                  <p className="text-gray-800 text-lg leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -79,15 +79,15 @@ export default function FeaturesSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="border-r border-coba-beige last:border-r-0">
               <div className="text-4xl font-bold text-coba-charcoal mb-2">+50,000</div>
-              <div className="text-coba-teal font-medium">Viajeros Satisfechos</div>
+              <div className="text-gray-800 font-medium">Viajeros Satisfechos</div>
             </div>
             <div className="border-r border-coba-beige last:border-r-0">
               <div className="text-4xl font-bold text-coba-charcoal mb-2">15+</div>
-              <div className="text-coba-teal font-medium">Años de Experiencia</div>
+              <div className="text-gray-800 font-medium">Años de Experiencia</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-coba-charcoal mb-2">24/7</div>
-              <div className="text-coba-teal font-medium">Soporte al Cliente</div>
+              <div className="text-gray-800 font-medium">Soporte al Cliente</div>
             </div>
           </div>
         </div>

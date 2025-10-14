@@ -278,13 +278,13 @@ ${formData.observaciones || 'Ninguna'}
                 {formData.paises.map((pais, index) => (
                   <span
                     key={index}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-coba-teal bg-opacity-20 text-coba-teal"
+                    className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-coba-teal bg-opacity-20 text-gray-800"
                   >
                     {pais}
                     <button
                       type="button"
                       onClick={() => handlePaisRemove(pais)}
-                      className="ml-2 text-coba-charcoal hover:text-coba-teal"
+                      className="ml-2 text-coba-charcoal hover:text-gray-800"
                     >
                       ×
                     </button>
@@ -345,7 +345,7 @@ ${formData.observaciones || 'Ninguna'}
                   type="checkbox"
                   checked={formData.actividades.includes(actividad)}
                   onChange={() => handleActividadToggle(actividad)}
-                  className="w-4 h-4 text-coba-teal border-gray-300 rounded focus:ring-coba-teal"
+                  className="w-4 h-4 text-gray-800 border-gray-300 rounded focus:ring-coba-teal"
                 />
                 <span className="text-sm text-gray-700">{actividad}</span>
               </label>
