@@ -28,7 +28,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </section>
 
   <!-- Información de la empresa -->
-  <section class="py-16 bg-coba-cream">
+  <section class="py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <!-- Texto -->
@@ -48,7 +48,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
           
           <!-- Información de contacto -->
-          <div class="bg-coba-beige p-6 rounded-2xl">
+          <div class="bg-coba-cream p-6 rounded-2xl">
             <h3 class="text-xl font-bold text-coba-charcoal mb-4">Información de Contacto</h3>
             <div class="space-y-3">
               <div class="flex items-center">
@@ -79,7 +79,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </section>
 
   <!-- Galería de destinos -->
-  <section class="py-16 bg-coba-beige">
+  <section class="py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-coba-charcoal mb-4">
@@ -137,7 +137,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </section>
 
   <!-- Valores y compromiso -->
-  <section class="py-16 bg-coba-cream">
+  <section class="py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-coba-charcoal mb-4">
@@ -150,7 +150,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Confianza -->
-        <div class="text-center p-6 bg-coba-beige rounded-2xl">
+        <div class="text-center p-6 bg-coba-cream rounded-2xl">
           <div class="w-16 h-16 bg-coba-yellow rounded-full flex items-center justify-center mx-auto mb-4">
             <span class="text-2xl">🤝</span>
           </div>
@@ -161,7 +161,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </div>
 
         <!-- Personalización -->
-        <div class="text-center p-6 bg-coba-beige rounded-2xl">
+        <div class="text-center p-6 bg-coba-cream rounded-2xl">
           <div class="w-16 h-16 bg-coba-yellow rounded-full flex items-center justify-center mx-auto mb-4">
             <span class="text-2xl">✨</span>
           </div>
@@ -172,7 +172,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </div>
 
         <!-- Experiencia -->
-        <div class="text-center p-6 bg-coba-beige rounded-2xl">
+        <div class="text-center p-6 bg-coba-cream rounded-2xl">
           <div class="w-16 h-16 bg-coba-yellow rounded-full flex items-center justify-center mx-auto mb-4">
             <span class="text-2xl">🌟</span>
           </div>
@@ -185,31 +185,4 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="py-16 bg-gradient-to-br from-coba-teal via-coba-royal to-coba-charcoal">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-bold text-coba-cream mb-4">
-        ¿Listo para tu próxima aventura?
-      </h2>
-      <p class="text-lg text-coba-beige mb-8 max-w-2xl mx-auto">
-        Contactanos hoy mismo y comencemos a planificar el viaje de tus sueños
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a 
-          href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola, quiero cotizar un viaje ✈️')}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bg-coba-yellow hover:bg-coba-beige text-coba-charcoal px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-        >
-          Cotizar por WhatsApp
-        </a>
-        <a 
-          href="tel:+542364469157"
-          class="border-2 border-coba-cream hover:bg-coba-cream hover:text-coba-royal text-coba-cream px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-        >
-          Llamar Ahora
-        </a>
-      </div>
-    </div>
-  </section>
 </BaseLayout>

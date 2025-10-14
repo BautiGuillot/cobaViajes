@@ -47,7 +47,7 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-coba-cream to-coba-beige">
+    <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-coba-charcoal mb-6">¿Por Qué Elegir Coba Viajes?</h2>
@@ -56,13 +56,13 @@ export default function FeaturesSection() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-coba-cream rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group transform hover:-translate-y-1">
+            <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group transform hover:-translate-y-1">
               <div className="flex items-start space-x-6">
                 <div className={`${feature.bgColor} w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
                   {feature.icon}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-coba-charcoal mb-3 group-hover:text-coba-royal transition-colors duration-200">
+                  <h3 className="text-2xl font-bold text-coba-charcoal mb-3 group-hover:text-coba-teal transition-colors duration-200">
                     {feature.title}
                   </h3>
                   <p className="text-coba-teal text-lg leading-relaxed">
@@ -75,18 +75,18 @@ export default function FeaturesSection() {
         </div>
         
         {/* Estadísticas adicionales */}
-        <div className="mt-16 bg-coba-cream rounded-2xl p-8 shadow-lg">
+        <div className="mt-16 bg-white rounded-2xl p-8 shadow-lg">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="border-r border-coba-beige last:border-r-0">
-              <div className="text-4xl font-bold text-coba-royal mb-2">+50,000</div>
+              <div className="text-4xl font-bold text-coba-charcoal mb-2">+50,000</div>
               <div className="text-coba-teal font-medium">Viajeros Satisfechos</div>
             </div>
             <div className="border-r border-coba-beige last:border-r-0">
-              <div className="text-4xl font-bold text-coba-royal mb-2">15+</div>
+              <div className="text-4xl font-bold text-coba-charcoal mb-2">15+</div>
               <div className="text-coba-teal font-medium">Años de Experiencia</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-coba-royal mb-2">24/7</div>
+              <div className="text-4xl font-bold text-coba-charcoal mb-2">24/7</div>
               <div className="text-coba-teal font-medium">Soporte al Cliente</div>
             </div>
           </div>

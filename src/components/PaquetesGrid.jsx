@@ -179,7 +179,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {paquetesFiltrados.map((p) => (
-          <div key={p.id} className="bg-coba-cream rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
+          <div key={p.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
             <a href={`/paquete?id=${p.id}`} className="block">
               {/* Imagen del paquete */}
               <div className="relative h-64 bg-gradient-to-br from-coba-teal via-coba-royal to-coba-charcoal overflow-hidden">
@@ -205,7 +205,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
                   </div>
                 )}
                 {/* Badge de fechas */}
-                <div className="absolute bottom-4 left-4 bg-coba-cream bg-opacity-90 text-coba-charcoal px-3 py-1 rounded-full text-sm font-medium">
+                <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 text-coba-charcoal px-3 py-1 rounded-full text-sm font-medium">
                   {p.fechaInicio ? new Date(p.fechaInicio).toLocaleDateString('es-ES', { month: 'short', day: 'numeric' }) : 'Próximamente'}
                 </div>
               </div>
@@ -213,10 +213,10 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
               {/* Contenido de la tarjeta */}
               <div className="p-6">
                 <div className="mb-3">
-                  <span className="text-sm text-coba-royal font-medium">{p.destino || 'Destino'}</span>
+                  <span className="text-sm text-coba-teal font-medium">{p.destino || 'Destino'}</span>
                 </div>
                 
-                <h3 className="text-xl font-bold text-coba-charcoal mb-3 group-hover:text-coba-royal transition-colors duration-200 line-clamp-2">
+                <h3 className="text-xl font-bold text-coba-charcoal mb-3 group-hover:text-coba-teal transition-colors duration-200 line-clamp-2">
                   {p.titulo}
                 </h3>
                 
@@ -237,15 +237,15 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
                 
 
                 {/* Precio y botón */}
-                <div className="flex items-center justify-between pt-4 border-t border-coba-beige">
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <div>
                     <span className="block text-xs text-coba-teal">Precio desde</span>
-                    <span className="text-2xl font-bold text-coba-royal">
+                    <span className="text-2xl font-bold text-coba-charcoal">
                       ${p.precio?.toLocaleString('es-ES') || '0'}
                     </span>
                     <span className="text-sm text-coba-teal ml-1">por persona</span>
                   </div>
-                  <div className="bg-coba-royal hover:bg-coba-teal text-coba-cream px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg">
+                  <div className="bg-coba-teal hover:bg-coba-charcoal text-coba-cream px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg">
                     Ver Detalles
                   </div>
                 </div>
@@ -259,7 +259,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
       <div className="text-center mt-12">
         <a
           href="/paquetes"
-          className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-coba-cream bg-coba-royal hover:bg-coba-teal transition-colors duration-200"
+          className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-coba-cream bg-coba-teal hover:bg-coba-charcoal transition-colors duration-200"
         >
           Ver Todos los Paquetes
           <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

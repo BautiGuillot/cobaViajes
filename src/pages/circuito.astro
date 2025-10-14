@@ -4,15 +4,33 @@ import CircuitoForm from "../components/CircuitoForm.jsx";
 ---
 
 <BaseLayout title="Solicitar Circuito Personalizado - Coba Viajes" description="Crea tu circuito personalizado con los destinos y fechas que prefieras" keywords="circuito personalizado, viaje a medida, presupuesto viaje, destinos múltiples">
-  <section class="py-16 bg-gradient-to-br from-coba-cream to-coba-beige">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-coba-charcoal mb-4">Solicita tu Circuito Personalizado</h1>
-        <p class="text-xl text-coba-teal max-w-2xl mx-auto">
+  <!-- Hero Section con imagen -->
+  <section class="relative h-[40vh] flex items-center justify-center overflow-hidden mb-16">
+    <!-- Imagen de fondo -->
+    <div 
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+    ></div>
+    
+    <!-- Overlay con gradiente -->
+    <div class="absolute inset-0 bg-gradient-to-br from-coba-charcoal/80 via-coba-teal/70 to-coba-royal/80"></div>
+    
+    <!-- Contenido -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 text-center">
+      <div class="animate-fade-in">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white drop-shadow-lg">
+          Solicita tu Circuito Personalizado
+        </h1>
+        <p class="text-lg md:text-xl mb-6 max-w-4xl mx-auto text-white/90 drop-shadow-md leading-relaxed">
           Diseñamos tu viaje perfecto según tus preferencias, fechas disponibles y destinos soñados
         </p>
       </div>
-      
+    </div>
+  </section>
+
+  <!-- Formulario -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <CircuitoForm client:load />
     </div>
   </section>
