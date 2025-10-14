@@ -128,7 +128,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
         <p className="text-gray-800 mb-4">No hay paquetes que coincidan con tus criterios de búsqueda.</p>
         <a
           href="/paquetes"
-          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-coba-royal bg-coba-yellow hover:bg-coba-beige transition-colors duration-200"
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-coba-charcoal bg-coba-yellow hover:opacity-90 transition-colors duration-200"
         >
           Ver todos los paquetes
         </a>
@@ -153,7 +153,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
         {Object.keys(filtrosAplicados).length > 0 && (
           <div className="mt-4 flex flex-wrap justify-center gap-2">
             {filtrosAplicados.destino && (
-              <span className="px-3 py-1 bg-coba-yellow text-coba-charcoal rounded-full text-sm">
+              <span className="px-3 py-1 text-coba-charcoal bg-coba-yellow rounded-full text-sm">
                 Destino: {filtrosAplicados.destino}
               </span>
             )}
@@ -200,7 +200,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
                 <div className="absolute inset-0 bg-black bg-opacity-20"></div>
                 {/* Badge de descuento si existe */}
                 {p.descuento && (
-                  <div className="absolute top-4 right-4 bg-coba-yellow text-coba-charcoal px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                  <div className="absolute top-4 right-4 text-coba-charcoal bg-coba-yellow px-3 py-1 rounded-full text-sm font-bold shadow-lg">
                     {p.descuento}% OFF
                   </div>
                 )}
@@ -245,7 +245,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
                     </span>
                     <span className="text-sm text-gray-800 ml-1">por persona</span>
                   </div>
-                  <div className="bg-coba-teal hover:bg-coba-charcoal text-coba-cream px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg">
+                  <div className="text-coba-charcoal bg-coba-yellow px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg hover:opacity-90">
                     Ver Detalles
                   </div>
                 </div>
@@ -259,7 +259,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
       <div className="text-center mt-12">
         <a
           href="/paquetes"
-          className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-coba-cream bg-coba-teal hover:bg-coba-charcoal transition-colors duration-200"
+          className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-coba-charcoal bg-coba-yellow hover:opacity-90 transition-colors duration-200"
         >
           Ver Todos los Paquetes
           <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

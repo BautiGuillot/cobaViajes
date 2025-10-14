@@ -9,12 +9,15 @@ export default {
       colors: {
         // Paleta de colores COBÁ Viajes y Turismo
         coba: {
-          yellow: '#FFD700',      // 01: Amarillo dorado brillante
+          yellow: '#ffd34e',      // 01: Amarillo dorado personalizado
           charcoal: '#2C2C2C',    // 02: Gris carbón oscuro
           royal: '#1E40AF',       // 03: Azul real vibrante
           teal: '#0F766E',        // 04: Verde azulado profundo
           beige: '#F5F5DC',       // 05: Beige cálido claro
           cream: '#FFFEF7',       // 06: Crema muy clara
+          gray: '#f2f2f2',        // 07: Gris claro fondo
+          darkgray: '#1a1a1a',    // 08: Gris oscuro para textos
+          whatsapp: '#25D366',    // 09: Verde WhatsApp oficial
         },
         primary: {
           50: '#FFFEF7',          // Crema muy clara

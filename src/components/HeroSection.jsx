@@ -17,7 +17,7 @@ export default function HeroSection() {
         <div className="animate-fade-in">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-lg">
             Descubre el Mundo con 
-            <span className="text-coba-yellow block md:inline"> Coba Viajes</span>
+            <span className="block md:inline text-coba-yellow"> Coba Viajes</span>
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl mb-6 max-w-4xl mx-auto text-white/90 drop-shadow-md leading-relaxed">
             Vive experiencias únicas con nuestros paquetes personalizados. Desde playas paradisíacas hasta aventuras en la montaña.
@@ -25,7 +25,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="#paquetes" 
-              className="bg-coba-yellow hover:bg-coba-beige text-coba-charcoal px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="text-coba-charcoal bg-coba-yellow px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover:opacity-90"
             >
               Explorar Destinos
             </a>

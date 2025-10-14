@@ -67,7 +67,7 @@ export default function Navbar() {
               href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola, quiero cotizar un viaje ✈️')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-coba-teal hover:bg-coba-charcoal text-coba-cream px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+              className="bg-coba-whatsapp hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
             >
               Cotizar por WhatsApp
             </a>
@@ -134,7 +134,7 @@ export default function Navbar() {
                 href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola, quiero cotizar un viaje ✈️')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-coba-teal hover:bg-coba-charcoal text-coba-cream block px-3 py-2 rounded-md text-base font-medium mt-4"
+                className="bg-coba-whatsapp hover:bg-green-600 text-white block px-3 py-2 rounded-md text-base font-medium mt-4"
               >
                 Cotizar por WhatsApp
               </a>

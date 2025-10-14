@@ -88,7 +88,7 @@ export default function SearchForm() {
             <div className="md:col-span-2 lg:col-span-3 flex justify-center mt-4">
               <button 
                 type="submit"
-                className="bg-coba-teal hover:bg-coba-charcoal text-coba-cream px-8 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center"
+                className="text-coba-charcoal bg-coba-yellow px-8 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center hover:opacity-90"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

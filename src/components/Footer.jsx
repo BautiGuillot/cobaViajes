@@ -82,27 +82,27 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/" className="text-coba-beige hover:text-coba-yellow transition-colors duration-200">
+                <a href="/" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
                   Inicio
                 </a>
               </li>
               <li>
-                <a href="/destinos" className="text-coba-beige hover:text-coba-yellow transition-colors duration-200">
+                <a href="/destinos" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
                   Destinos
                 </a>
               </li>
               <li>
-                <a href="/" className="text-coba-beige hover:text-coba-yellow transition-colors duration-200">
+                <a href="/" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
                   Paquetes
                 </a>
               </li>
               <li>
-                <a href="/ofertas" className="text-coba-beige hover:text-coba-yellow transition-colors duration-200">
+                <a href="/ofertas" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
                   Ofertas Especiales
                 </a>
               </li>
               <li>
-                <a href="/blog" className="text-coba-beige hover:text-coba-yellow transition-colors duration-200">
+                <a href="/blog" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
                   Blog de Viajes
                 </a>
               </li>
@@ -114,27 +114,27 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Servicios</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/corporativos" className="text-coba-beige hover:text-coba-yellow transition-colors duration-200">
+                <a href="/corporativos" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
                   Viajes Corporativos
                 </a>
               </li>
               <li>
-                <a href="/luna-miel" className="text-coba-beige hover:text-coba-yellow transition-colors duration-200">
+                <a href="/luna-miel" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
                   Luna de Miel
                 </a>
               </li>
               <li>
-                <a href="/grupos" className="text-coba-beige hover:text-coba-yellow transition-colors duration-200">
+                <a href="/grupos" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
                   Viajes en Grupo
                 </a>
               </li>
               <li>
-                <a href="/seguros" className="text-coba-beige hover:text-coba-yellow transition-colors duration-200">
+                <a href="/seguros" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
                   Seguros de Viaje
                 </a>
               </li>
               <li>
-                <a href="/visas" className="text-coba-beige hover:text-coba-yellow transition-colors duration-200">
+                <a href="/visas" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
                   Visa y Documentos
                 </a>
               </li>
@@ -146,17 +146,17 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Contacto</h4>
             <div className="space-y-3 mb-6">
               <div className="flex items-center">
-                <span className="text-coba-yellow mr-2">📲</span>
-                <a href="tel:+542364469157" className="text-coba-beige hover:text-coba-yellow text-sm transition-colors">
+                <span className="mr-2 text-coba-yellow">📲</span>
+                <a href="tel:+542364469157" className="text-coba-beige hover:opacity-80 text-sm transition-colors">
                   2364 46-9157
                 </a>
               </div>
               <div className="flex items-center">
-                <span className="text-coba-yellow mr-2">📍</span>
+                <span className="mr-2 text-coba-yellow">📍</span>
                 <span className="text-coba-beige text-sm">R. De Escalada 92, Junín (Bs As)</span>
               </div>
               <div className="flex items-center">
-                <span className="text-coba-yellow mr-2">✈️</span>
+                <span className="mr-2 text-coba-yellow">✈️</span>
                 <span className="text-coba-beige text-sm">Hace realidad tu sueño de viajar</span>
               </div>
             </div>
@@ -169,7 +169,7 @@ export default function Footer() {
                   href="https://wa.me/2364379198" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-coba-beige hover:text-coba-yellow transition-colors duration-200"
+                  className="text-coba-beige hover:opacity-80 transition-colors duration-200"
                   title="WhatsApp"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -180,7 +180,7 @@ export default function Footer() {
                   href="https://www.facebook.com/cobaviajes" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-coba-beige hover:text-coba-yellow transition-colors duration-200"
+                  className="text-coba-beige hover:opacity-80 transition-colors duration-200"
                   title="Facebook"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -191,7 +191,7 @@ export default function Footer() {
                   href="https://www.instagram.com/cobaviajes" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-coba-beige hover:text-coba-yellow transition-colors duration-200"
+                  className="text-coba-beige hover:opacity-80 transition-colors duration-200"
                   title="Instagram"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -228,14 +228,14 @@ export default function Footer() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-4 py-2 bg-coba-yellow hover:bg-coba-beige disabled:opacity-60 disabled:cursor-not-allowed text-coba-charcoal text-sm font-medium rounded-r-md transition-colors duration-200"
+                    className="px-4 py-2 bg-coba-yellow hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed text-coba-charcoal text-sm font-medium rounded-r-md transition-colors duration-200"
                   >
                     {isSubmitting ? "Enviando..." : "Suscribir"}
                   </button>
                 </div>
               </form>
               {isSubscribed && (
-                <p className="text-coba-yellow text-xs mt-2">¡Te has suscrito exitosamente!</p>
+                <p className="text-xs mt-2 text-coba-yellow">¡Te has suscrito exitosamente!</p>
               )}
               {errorMessage && (
                 <p className="text-red-400 text-xs mt-2">{errorMessage}</p>
@@ -247,7 +247,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-coba-teal mt-8 pt-8 text-center">
           <p className="text-coba-beige text-sm">
-            © {new Date().getFullYear()} Coba Viajes. Todos los derechos reservados.
+            © {new Date().getFullYear()} BatMat. Todos los derechos reservados.
           </p>
         </div>
       </div>
