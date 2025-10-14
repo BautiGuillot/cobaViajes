@@ -14,7 +14,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-coba-royal">Coba Viajes</span>
+              <img src="/coba-logo.webp" alt="Coba Viajes" className="h-12" />
             </a>
           </div>
 

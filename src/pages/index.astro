@@ -11,11 +11,28 @@ const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
 <BaseLayout title="Coba Viajes - Tu aventura comienza aquí">
   <HeroSection client:load />
   
+  <!-- Separador -->
+  <div class="border-t border-gray-200"></div>
+  
   <SearchForm client:load />
+  
+  <!-- Separador con decoración -->
+  <div class="py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="border-t-2 border-gray-300"></div>
+    </div>
+  </div>
   
   <section id="paquetes" class="py-16">
     <PaquetesGrid client:load apiUrl={API_URL} dominio={DOMINIO} />
   </section>
+  
+  <!-- Separador con decoración -->
+  <div class="py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="border-t-2 border-gray-300"></div>
+    </div>
+  </div>
   
   <FeaturesSection client:load />
 </BaseLayout>
