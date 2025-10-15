@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSection from "../components/HeroSection.jsx";
 import SearchForm from "../components/SearchForm.jsx";
 import PaquetesGrid from "../components/PaquetesGrid.jsx";
+import CrucerosGrid from "../components/CrucerosGrid.jsx";
 import FeaturesSection from "../components/FeaturesSection.jsx";
 
 const API_URL = import.meta.env.PUBLIC_API_URL;
@@ -25,6 +26,17 @@ const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
   
   <section id="paquetes" class="py-16">
     <PaquetesGrid client:load apiUrl={API_URL} dominio={DOMINIO} />
+  </section>
+  
+  <!-- Separador con decoración -->
+  <div class="py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="border-t-2 border-gray-300"></div>
+    </div>
+  </div>
+  
+  <section id="cruceros" class="py-16">
+    <CrucerosGrid client:load apiUrl={API_URL} dominio={DOMINIO} />
   </section>
   
   <!-- Separador con decoración -->
