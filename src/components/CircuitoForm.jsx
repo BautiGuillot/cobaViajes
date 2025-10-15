@@ -84,38 +84,38 @@ export default function CircuitoForm() {
     }
 
     // Crear mensaje para WhatsApp
-    const mensaje = `🏖️ *Solicitud de Circuito Personalizado*
+    const mensaje = `*SOLICITUD DE CIRCUITO PERSONALIZADO*
 
-👤 *Datos del Cliente:*
-• Nombre: ${formData.nombre}
-• Email: ${formData.email}
-• Teléfono: ${formData.telefono}
+*Datos del Cliente:*
+- Nombre: ${formData.nombre}
+- Email: ${formData.email}
+- Telefono: ${formData.telefono}
 
-📅 *Fechas y Duración:*
-• Fecha inicio: ${formData.fechaInicio || 'No especificada'}
-• Fecha fin: ${formData.fechaFin || 'No especificada'}
-• Días disponibles: ${diasCalculados || formData.diasDisponibles || 'No especificados'}
+*Fechas y Duracion:*
+- Fecha inicio: ${formData.fechaInicio || 'No especificada'}
+- Fecha fin: ${formData.fechaFin || 'No especificada'}
+- Dias disponibles: ${diasCalculados || formData.diasDisponibles || 'No especificados'}
 
-👥 *Viajeros:*
-• Cantidad: ${formData.viajeros} personas
+*Viajeros:*
+- Cantidad: ${formData.viajeros} personas
 
-💰 *Presupuesto:*
-• ${formData.presupuesto || 'No especificado'}
+*Presupuesto:*
+- ${formData.presupuesto || 'No especificado'}
 
-🌍 *Destinos:*
-${formData.paises.length > 0 ? formData.paises.map(pais => `• ${pais}`).join('\n') : '• No especificados'}
+*Destinos:*
+${formData.paises.length > 0 ? formData.paises.map(pais => `- ${pais}`).join('\n') : '- No especificados'}
 
-🏨 *Preferencias:*
-• Alojamiento: ${formData.tipoAlojamiento || 'No especificado'}
-• Transporte: ${formData.tipoTransporte || 'No especificado'}
+*Preferencias:*
+- Alojamiento: ${formData.tipoAlojamiento || 'No especificado'}
+- Transporte: ${formData.tipoTransporte || 'No especificado'}
 
-🎯 *Actividades de interés:*
-${formData.actividades.length > 0 ? formData.actividades.map(act => `• ${act}`).join('\n') : '• No especificadas'}
+*Actividades de interes:*
+${formData.actividades.length > 0 ? formData.actividades.map(act => `- ${act}`).join('\n') : '- No especificadas'}
 
-📝 *Observaciones:*
+*Observaciones:*
 ${formData.observaciones || 'Ninguna'}
 
-¡Hola! Me gustaría solicitar un presupuesto para este circuito personalizado.`;
+Hola! Me gustaria solicitar un presupuesto para este circuito personalizado.`;
 
     // Codificar mensaje para URL
     const mensajeCodificado = encodeURIComponent(mensaje);

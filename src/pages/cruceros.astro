@@ -1,0 +1,434 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout 
+  title="Cruceros - Coba Viajes" 
+  description="Descubre los mejores cruceros del mundo con Coba Viajes. Navega por el Caribe, Mediterráneo, Alaska y más destinos increíbles" 
+  keywords="cruceros, viajes en crucero, cruceros caribe, cruceros mediterraneo, vacaciones en crucero"
+>
+  <!-- Hero Section -->
+  <section class="relative h-[50vh] flex items-center justify-center overflow-hidden">
+    <!-- Imagen de fondo -->
+    <div 
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('https://images.unsplash.com/photo-1548574505-5e239809ee19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80')"
+    ></div>
+    
+    <!-- Filtro con 20% de opacidad -->
+    <div class="absolute inset-0 bg-black/20"></div>
+    
+    <!-- Contenido -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 text-center">
+      <div class="animate-fade-in">
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-lg">
+          Cruceros de Ensueno
+        </h1>
+        <p class="text-lg md:text-xl lg:text-2xl mb-6 max-w-4xl mx-auto text-white/90 drop-shadow-md leading-relaxed">
+          Navega por los mares mas hermosos del mundo. Descubre destinos increibles mientras disfrutas del maximo confort y entretenimiento a bordo.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#cruceros"
+            class="text-coba-charcoal bg-coba-yellow px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover:opacity-90"
+          >
+            Explorar Cruceros
+          </a>
+          <a
+            href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Quiero informacion sobre cruceros')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="border-2 border-white hover:bg-white hover:text-coba-royal text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          >
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separador -->
+  <div class="border-t border-gray-200"></div>
+
+  <!-- Cruceros Destacados -->
+  <section id="cruceros" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-coba-charcoal mb-4">Cruceros Destacados</h2>
+        <p class="text-lg text-gray-800 max-w-2xl mx-auto">
+          Descubre nuestras mejores ofertas en cruceros para tus proximas vacaciones
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Crucero 1: Caribe -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              alt="Crucero por el Caribe"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+            <div class="absolute top-4 right-4 bg-coba-yellow text-coba-charcoal px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+              POPULAR
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-coba-charcoal mb-2">Caribe Magico</h3>
+            <p class="text-gray-800 text-sm mb-4">7 noches | Salida desde Miami</p>
+            <p class="text-gray-800 mb-4 line-clamp-2">
+              Explora las paradisiacas islas del Caribe. Visitando Jamaica, Gran Caiman y Cozumel.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+              <div>
+                <span class="block text-xs text-gray-800">Precio desde</span>
+                <span class="text-2xl font-bold text-coba-charcoal">$899</span>
+                <span class="text-sm text-gray-800 ml-1">por persona</span>
+              </div>
+              <a
+                href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Me interesa el crucero: Caribe Magico')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 text-coba-charcoal bg-coba-yellow rounded-lg text-sm font-medium transition-colors hover:opacity-90"
+              >
+                Cotizar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Crucero 2: Mediterraneo -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1594646636825-0b7148448e7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              alt="Crucero por el Mediterraneo"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+            <div class="absolute top-4 right-4 bg-coba-yellow text-coba-charcoal px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+              OFERTA
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-coba-charcoal mb-2">Mediterraneo Clasico</h3>
+            <p class="text-gray-800 text-sm mb-4">10 noches | Salida desde Barcelona</p>
+            <p class="text-gray-800 mb-4 line-clamp-2">
+              Descubre la historia y cultura del Mediterraneo. Italia, Grecia, Turquia y mas.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+              <div>
+                <span class="block text-xs text-gray-800">Precio desde</span>
+                <span class="text-2xl font-bold text-coba-charcoal">$1,499</span>
+                <span class="text-sm text-gray-800 ml-1">por persona</span>
+              </div>
+              <a
+                href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Me interesa el crucero: Mediterraneo Clasico')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 text-coba-charcoal bg-coba-yellow rounded-lg text-sm font-medium transition-colors hover:opacity-90"
+              >
+                Cotizar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Crucero 3: Alaska -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1516684732162-798a0062be99?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              alt="Crucero por Alaska"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-coba-charcoal mb-2">Alaska Salvaje</h3>
+            <p class="text-gray-800 text-sm mb-4">7 noches | Salida desde Seattle</p>
+            <p class="text-gray-800 mb-4 line-clamp-2">
+              Vive la aventura en Alaska. Glaciares impresionantes, ballenas y paisajes unicos.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+              <div>
+                <span class="block text-xs text-gray-800">Precio desde</span>
+                <span class="text-2xl font-bold text-coba-charcoal">$1,199</span>
+                <span class="text-sm text-gray-800 ml-1">por persona</span>
+              </div>
+              <a
+                href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Me interesa el crucero: Alaska Salvaje')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 text-coba-charcoal bg-coba-yellow rounded-lg text-sm font-medium transition-colors hover:opacity-90"
+              >
+                Cotizar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Crucero 4: Bahamas -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1571074689447-df0fc01917e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              alt="Crucero a Bahamas"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-coba-charcoal mb-2">Bahamas Paradise</h3>
+            <p class="text-gray-800 text-sm mb-4">4 noches | Salida desde Miami</p>
+            <p class="text-gray-800 mb-4 line-clamp-2">
+              Escapada rapida a las Bahamas. Playas de arena blanca y aguas cristalinas.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+              <div>
+                <span class="block text-xs text-gray-800">Precio desde</span>
+                <span class="text-2xl font-bold text-coba-charcoal">$499</span>
+                <span class="text-sm text-gray-800 ml-1">por persona</span>
+              </div>
+              <a
+                href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Me interesa el crucero: Bahamas Paradise')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 text-coba-charcoal bg-coba-yellow rounded-lg text-sm font-medium transition-colors hover:opacity-90"
+              >
+                Cotizar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Crucero 5: Europa del Norte -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              alt="Crucero por Europa del Norte"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+            <div class="absolute top-4 right-4 bg-coba-yellow text-coba-charcoal px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+              NUEVO
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-coba-charcoal mb-2">Fiordos Noruegos</h3>
+            <p class="text-gray-800 text-sm mb-4">12 noches | Salida desde Copenhagen</p>
+            <p class="text-gray-800 mb-4 line-clamp-2">
+              Maravillas naturales de Escandinavia. Fiordos, auroras boreales y ciudades vikingas.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+              <div>
+                <span class="block text-xs text-gray-800">Precio desde</span>
+                <span class="text-2xl font-bold text-coba-charcoal">$1,899</span>
+                <span class="text-sm text-gray-800 ml-1">por persona</span>
+              </div>
+              <a
+                href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Me interesa el crucero: Fiordos Noruegos')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 text-coba-charcoal bg-coba-yellow rounded-lg text-sm font-medium transition-colors hover:opacity-90"
+              >
+                Cotizar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Crucero 6: Asia -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              alt="Crucero por Asia"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-coba-charcoal mb-2">Tesoros de Asia</h3>
+            <p class="text-gray-800 text-sm mb-4">14 noches | Salida desde Singapur</p>
+            <p class="text-gray-800 mb-4 line-clamp-2">
+              Cultura milenaria y paisajes exoticos. Tailandia, Vietnam, Hong Kong y mas.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+              <div>
+                <span class="block text-xs text-gray-800">Precio desde</span>
+                <span class="text-2xl font-bold text-coba-charcoal">$1,699</span>
+                <span class="text-sm text-gray-800 ml-1">por persona</span>
+              </div>
+              <a
+                href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Me interesa el crucero: Tesoros de Asia')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 text-coba-charcoal bg-coba-yellow rounded-lg text-sm font-medium transition-colors hover:opacity-90"
+              >
+                Cotizar
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separador con decoracion -->
+  <div class="py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="border-t-2 border-gray-300"></div>
+    </div>
+  </div>
+
+  <!-- Companias de Cruceros -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-coba-charcoal mb-4">Principales Companias</h2>
+        <p class="text-lg text-gray-800 max-w-2xl mx-auto">
+          Trabajamos con las mejores lineas de cruceros del mundo
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-coba-royal mb-2">Royal Caribbean</div>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-coba-teal mb-2">Carnival</div>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-coba-royal mb-2">Norwegian</div>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-coba-teal mb-2">MSC Cruises</div>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-coba-royal mb-2">Princess</div>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-coba-teal mb-2">Celebrity</div>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-coba-royal mb-2">Disney</div>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-coba-teal mb-2">Costa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separador con decoracion -->
+  <div class="py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="border-t-2 border-gray-300"></div>
+    </div>
+  </div>
+
+  <!-- Por que elegir cruceros -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-coba-charcoal mb-4">Por que elegir un Crucero?</h2>
+        <p class="text-lg text-gray-800 max-w-2xl mx-auto">
+          Descubre todos los beneficios de viajar en crucero
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Beneficio 1 -->
+        <div class="text-center">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-coba-yellow rounded-full mb-4">
+            <svg class="w-8 h-8 text-coba-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-coba-charcoal mb-2">Multiples Destinos</h3>
+          <p class="text-gray-800">
+            Visita varias ciudades y paises en un solo viaje sin cambiar de hotel
+          </p>
+        </div>
+
+        <!-- Beneficio 2 -->
+        <div class="text-center">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-coba-yellow rounded-full mb-4">
+            <svg class="w-8 h-8 text-coba-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-coba-charcoal mb-2">Todo Incluido</h3>
+          <p class="text-gray-800">
+            Comidas, entretenimiento y actividades incluidas en el precio
+          </p>
+        </div>
+
+        <!-- Beneficio 3 -->
+        <div class="text-center">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-coba-yellow rounded-full mb-4">
+            <svg class="w-8 h-8 text-coba-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-coba-charcoal mb-2">Entretenimiento</h3>
+          <p class="text-gray-800">
+            Shows en vivo, casinos, piscinas, spas y actividades para toda la familia
+          </p>
+        </div>
+
+        <!-- Beneficio 4 -->
+        <div class="text-center">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-coba-yellow rounded-full mb-4">
+            <svg class="w-8 h-8 text-coba-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-coba-charcoal mb-2">Comodidad</h3>
+          <p class="text-gray-800">
+            Desempaca una sola vez y despierta en un destino diferente cada dia
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+
