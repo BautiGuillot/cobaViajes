@@ -66,8 +66,9 @@ export default function CrucerosGrid({ apiUrl, dominio, mostrarBotonVerTodos = t
 
           return (
             <div key={crucero.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
-              {/* Imagen del crucero */}
-              <div className="relative h-64 bg-gradient-to-br from-coba-teal via-coba-royal to-coba-charcoal overflow-hidden">
+              <a href={`/crucero?id=${crucero.id}`} className="block">
+                {/* Imagen del crucero */}
+                <div className="relative h-64 bg-gradient-to-br from-coba-teal via-coba-royal to-coba-charcoal overflow-hidden">
                 {crucero.imagenUrl ? (
                   <img 
                     src={crucero.imagenUrl} 
@@ -90,10 +91,10 @@ export default function CrucerosGrid({ apiUrl, dominio, mostrarBotonVerTodos = t
                     {new Date(crucero.fechaInicio).toLocaleDateString('es-ES', { month: 'short', day: 'numeric' })}
                   </div>
                 )}
-              </div>
+                </div>
 
-              {/* Contenido de la tarjeta */}
-              <div className="p-6">
+                {/* Contenido de la tarjeta */}
+                <div className="p-6">
                 <div className="mb-3">
                   <span className="text-sm text-gray-800 font-medium">{crucero.destino || 'Destino'}</span>
                 </div>
@@ -118,22 +119,29 @@ export default function CrucerosGrid({ apiUrl, dominio, mostrarBotonVerTodos = t
                 {/* Precio y botón */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <div>
-                    <span className="block text-xs text-gray-800">Precio desde</span>
-                    <span className="text-2xl font-bold text-coba-charcoal">
-                      ${crucero.precio?.toLocaleString('es-ES') || '0'}
-                    </span>
-                    <span className="text-sm text-gray-800 ml-1">por persona</span>
+                    {crucero.precio && crucero.precio > 0 ? (
+                      <>
+                        <span className="block text-xs text-gray-800">Precio desde</span>
+                        <span className="text-2xl font-bold text-coba-charcoal">
+                          ${crucero.precio.toLocaleString('es-ES')}
+                        </span>
+                        <span className="text-sm text-gray-800 ml-1">por persona</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="block text-sm text-gray-800 mb-1">Precio</span>
+                        <span className="text-lg font-semibold text-coba-charcoal">
+                          Solicitar presupuesto
+                        </span>
+                      </>
+                    )}
                   </div>
-                  <a
-                    href={`https://wa.me/2364379198?text=${encodeURIComponent(`Hola! Me interesa el crucero: ${crucero.titulo}`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-coba-charcoal bg-coba-yellow px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:opacity-90"
-                  >
-                    Consultar
-                  </a>
+                  <div className="text-coba-charcoal bg-coba-yellow px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg hover:opacity-90">
+                    Ver Detalles
+                  </div>
                 </div>
-              </div>
+                </div>
+              </a>
             </div>
           );
         })}

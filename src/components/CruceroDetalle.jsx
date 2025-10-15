@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-export default function PaqueteDetalle(props) {
+export default function CruceroDetalle(props) {
   const { apiUrl, dominio, id } = props ?? {};
-  const [paquete, setPaquete] = useState(null);
+  const [crucero, setCrucero] = useState(null);
 
   useEffect(() => {
     const hostname =
@@ -19,32 +19,32 @@ export default function PaqueteDetalle(props) {
 
     const safeHost = encodeURIComponent(hostname);
     const safeId = encodeURIComponent(usedId);
-    fetch(`${base}/api/public/paquetes/dominio/${safeHost}/paquete/${safeId}`)
+    fetch(`${base}/api/public/cruceros/dominio/${safeHost}/crucero/${safeId}`)
       .then((res) => res.json())
-      .then((data) => setPaquete(data))
-      .catch(() => setPaquete(null));
+      .then((data) => setCrucero(data))
+      .catch(() => setCrucero(null));
   }, [apiUrl, dominio, id]);
 
-  if (!paquete)
+  if (!crucero)
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col items-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-coba-royal"></div>
-        <p className="mt-4 text-gray-800">Cargando paquete...</p>
+        <p className="mt-4 text-gray-800">Cargando crucero...</p>
       </div>
     );
 
-  const tienePrecio = paquete.precio && paquete.precio > 0;
+  const tienePrecio = crucero.precio && crucero.precio > 0;
   const precioFormateado = tienePrecio
-    ? (typeof paquete.precio === "number"
-        ? paquete.precio.toLocaleString("es-ES")
-        : paquete.precio)
+    ? (typeof crucero.precio === "number"
+        ? crucero.precio.toLocaleString("es-ES")
+        : crucero.precio)
     : null;
 
-  const dias = paquete?.fechaInicio && paquete?.fechaFin
+  const duracionNoches = crucero?.fechaInicio && crucero?.fechaFin
     ? Math.max(
         1,
         Math.ceil(
-          (new Date(paquete.fechaFin).getTime() - new Date(paquete.fechaInicio).getTime()) /
+          (new Date(crucero.fechaFin).getTime() - new Date(crucero.fechaInicio).getTime()) /
             (1000 * 60 * 60 * 24)
         )
       )
@@ -60,47 +60,47 @@ export default function PaqueteDetalle(props) {
           </li>
           <li className="mx-2">/</li>
           <li>
-            <a href="/#paquetes" className="hover:text-coba-royal">Paquetes</a>
+            <a href="/cruceros" className="hover:text-coba-royal">Cruceros</a>
           </li>
           <li className="mx-2">/</li>
-          <li className="text-coba-charcoal" aria-current="page">{paquete.titulo}</li>
+          <li className="text-coba-charcoal" aria-current="page">{crucero.titulo}</li>
         </ol>
       </nav>
 
       {/* Hero imagen */}
       <div className="rounded-2xl overflow-hidden shadow-lg mb-8">
         <div className="relative h-64 md:h-96 bg-coba-beige">
-          {paquete.imagenDestino ? (
+          {crucero.imagenUrl ? (
             <img
-              src={paquete.imagenDestino}
-              alt={`Imagen del paquete ${paquete.titulo}`}
+              src={crucero.imagenUrl}
+              alt={`Imagen del crucero ${crucero.titulo}`}
               className="w-full h-full object-cover"
               loading="eager"
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center text-gray-800">
               <svg className="w-20 h-20" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
               </svg>
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-end justify-between gap-3">
             <div>
-              <h1 className="text-2xl md:text-4xl font-bold text-white drop-shadow">{paquete.titulo}</h1>
-              {paquete.destino && (
-                <p className="text-white/90 mt-1">{paquete.destino}</p>
+              <h1 className="text-2xl md:text-4xl font-bold text-white drop-shadow">{crucero.titulo}</h1>
+              {crucero.destino && (
+                <p className="text-white/90 mt-1">{crucero.destino}</p>
               )}
             </div>
             <div className="flex gap-2">
-              {dias && (
+              {duracionNoches && (
                 <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
-                  {dias} días
+                  {duracionNoches} noches
                 </span>
               )}
-              {paquete.fechaInicio && (
+              {crucero.fechaInicio && (
                 <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
-                  {new Date(paquete.fechaInicio).toLocaleDateString("es-ES", { day: "2-digit", month: "short", year: "numeric" })}
+                  {new Date(crucero.fechaInicio).toLocaleDateString("es-ES", { day: "2-digit", month: "short", year: "numeric" })}
                 </span>
               )}
             </div>
@@ -114,20 +114,49 @@ export default function PaqueteDetalle(props) {
         <div className="lg:col-span-2">
           <div className="bg-coba-cream rounded-2xl shadow p-6 md:p-8">
             <h2 className="text-xl font-semibold text-coba-charcoal mb-4">Descripción</h2>
-            <p className="text-gray-800 leading-relaxed whitespace-pre-line">{paquete.descripcion}</p>
-            {(paquete.imagenHotel) && (
-              <div className="mt-6">
-                <h3 className="text-lg font-semibold text-coba-charcoal mb-3">Imagen del hotel</h3>
-                <div className="rounded-xl overflow-hidden shadow">
-                  <img
-                    src={paquete.imagenHotel}
-                    alt={`Hotel para el paquete ${paquete.titulo}`}
-                    className="w-full h-64 object-cover"
-                    loading="lazy"
-                  />
+            <p className="text-gray-800 leading-relaxed whitespace-pre-line">{crucero.descripcion}</p>
+            
+            {/* Información adicional del crucero */}
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+              {crucero.puertoSalida && (
+                <div className="bg-white rounded-lg p-4 shadow-sm">
+                  <h3 className="text-sm font-semibold text-gray-800 mb-1">Puerto de Salida</h3>
+                  <p className="text-coba-charcoal font-medium">{crucero.puertoSalida}</p>
                 </div>
-              </div>
-            )}
+              )}
+              {crucero.puertoLlegada && (
+                <div className="bg-white rounded-lg p-4 shadow-sm">
+                  <h3 className="text-sm font-semibold text-gray-800 mb-1">Puerto de Llegada</h3>
+                  <p className="text-coba-charcoal font-medium">{crucero.puertoLlegada}</p>
+                </div>
+              )}
+              {crucero.fechaInicio && (
+                <div className="bg-white rounded-lg p-4 shadow-sm">
+                  <h3 className="text-sm font-semibold text-gray-800 mb-1">Fecha de Inicio</h3>
+                  <p className="text-coba-charcoal font-medium">
+                    {new Date(crucero.fechaInicio).toLocaleDateString("es-ES", { 
+                      weekday: 'long',
+                      day: "2-digit", 
+                      month: "long", 
+                      year: "numeric" 
+                    })}
+                  </p>
+                </div>
+              )}
+              {crucero.fechaFin && (
+                <div className="bg-white rounded-lg p-4 shadow-sm">
+                  <h3 className="text-sm font-semibold text-gray-800 mb-1">Fecha de Finalización</h3>
+                  <p className="text-coba-charcoal font-medium">
+                    {new Date(crucero.fechaFin).toLocaleDateString("es-ES", { 
+                      weekday: 'long',
+                      day: "2-digit", 
+                      month: "long", 
+                      year: "numeric" 
+                    })}
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -153,7 +182,7 @@ export default function PaqueteDetalle(props) {
               )}
             </div>
             <a
-              href={`https://wa.me/2364379198?text=${encodeURIComponent(`Hola! Me interesa el paquete:\n\n*${paquete.titulo}*\n\nDestino: ${paquete.destino || 'N/A'}${tienePrecio ? `\nPrecio: $${precioFormateado}` : ''}\n\nPodrian darme mas informacion?`)}`}
+              href={`https://wa.me/2364379198?text=${encodeURIComponent(`Hola! Me interesa el crucero:\n\n*${crucero.titulo}*\n\nDestino: ${crucero.destino || 'N/A'}${tienePrecio ? `\nPrecio: $${precioFormateado}` : ''}\n\nPodrian darme mas informacion?`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full inline-flex items-center justify-center px-4 py-3 rounded-lg bg-coba-whatsapp hover:bg-green-600 text-white font-medium transition-colors"
@@ -163,24 +192,15 @@ export default function PaqueteDetalle(props) {
               </svg>
               Solicitar Presupuesto
             </a>
-            {paquete.urlHotel && (
-              <a
-                href={paquete.urlHotel}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 w-full inline-flex items-center justify-center px-4 py-3 rounded-lg border border-coba-royal text-coba-royal hover:bg-coba-royal hover:text-coba-cream font-medium transition-colors"
-              >
-                Ver hotel
-              </a>
-            )}
             <p className="text-xs text-gray-800 mt-3">Presupuesto sujeto a disponibilidad.</p>
           </div>
 
           <div className="mt-6 text-sm">
-            <a href="/" className="text-gray-800 hover:text-coba-royal">← Volver</a>
+            <a href="/cruceros" className="text-gray-800 hover:text-coba-royal">← Volver a cruceros</a>
           </div>
         </aside>
       </div>
     </section>
   );
 }
+

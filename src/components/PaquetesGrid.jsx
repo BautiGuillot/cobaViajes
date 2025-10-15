@@ -239,11 +239,22 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
                 {/* Precio y botón */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <div>
-                    <span className="block text-xs text-gray-800">Precio desde</span>
-                    <span className="text-2xl font-bold text-coba-charcoal">
-                      ${p.precio?.toLocaleString('es-ES') || '0'}
-                    </span>
-                    <span className="text-sm text-gray-800 ml-1">por persona</span>
+                    {p.precio && p.precio > 0 ? (
+                      <>
+                        <span className="block text-xs text-gray-800">Precio desde</span>
+                        <span className="text-2xl font-bold text-coba-charcoal">
+                          ${p.precio.toLocaleString('es-ES')}
+                        </span>
+                        <span className="text-sm text-gray-800 ml-1">por persona</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="block text-sm text-gray-800 mb-1">Precio</span>
+                        <span className="text-lg font-semibold text-coba-charcoal">
+                          Solicitar presupuesto
+                        </span>
+                      </>
+                    )}
                   </div>
                   <div className="text-coba-charcoal bg-coba-yellow px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg hover:opacity-90">
                     Ver Detalles

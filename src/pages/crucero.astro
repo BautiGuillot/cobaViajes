@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CruceroDetalle from "../components/CruceroDetalle.jsx";
+
+const API_URL = import.meta.env.PUBLIC_API_URL;
+const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
+---
+<BaseLayout title="Detalle del crucero - Coba Viajes" description="Descubre los detalles de nuestros cruceros" keywords="crucero, viajes, vacaciones, destino, Coba Viajes">
+  <CruceroDetalle client:load apiUrl={API_URL} dominio={DOMINIO} />
+</BaseLayout>
+
