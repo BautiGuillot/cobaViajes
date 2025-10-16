@@ -1,18 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PaquetesGrid from "../components/PaquetesGrid.jsx";
-
-const API_URL = import.meta.env.PUBLIC_API_URL;
-const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
+import Viajes15Grid from "../components/Viajes15Grid.jsx";
 ---
 
-<BaseLayout title="Paquetes - Coba Viajes">
+<BaseLayout title="Viajes de 15 Años - Coba Viajes">
   <!-- Hero estilo unificado -->
   <section class="relative h-[50vh] flex items-center justify-center overflow-hidden">
     <!-- Imagen de fondo -->
     <div 
       class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+      style="background-image: url('https://images.unsplash.com/photo-1516051662687-567d7c4e8f6a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1550')"
     ></div>
     
     <!-- Overlay COBÁ -->
@@ -22,20 +19,20 @@ const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="animate-fade-in">
         <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-coba-cream drop-shadow-lg">
-          Paquetes de Viaje
+          Viajes de 15 Años
         </h1>
         <p class="text-lg md:text-2xl mb-6 max-w-4xl mx-auto text-coba-beige drop-shadow-md leading-relaxed">
-          Descubre nuestras mejores ofertas y arma tu viaje ideal con nuestra ayuda
+          Celebra tu momento especial con experiencias mágicas en Orlando, Miami y más
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="#paquetes"
+            href="#viajes15"
             class="text-coba-charcoal bg-coba-yellow px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover:opacity-90"
           >
-            Ver Paquetes
+            Explorar Experiencias
           </a>
           <a
-            href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Quiero información sobre paquetes de viaje')}`}
+            href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Quiero información sobre viajes de 15 años')}`}
             target="_blank"
             rel="noopener noreferrer"
             class="border-2 border-white hover:bg-white hover:text-coba-royal text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
@@ -50,9 +47,9 @@ const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
   <!-- Separador -->
   <div class="border-t border-gray-200"></div>
 
-  <section id="paquetes" class="py-16">
+  <section id="viajes15" class="py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <PaquetesGrid client:load apiUrl={API_URL} dominio={DOMINIO} />
+      <Viajes15Grid client:load />
     </div>
   </section>
 </BaseLayout>
@@ -64,3 +61,4 @@ const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
   }
   .animate-fade-in { animation: fade-in 1s ease-out; }
 </style>
+

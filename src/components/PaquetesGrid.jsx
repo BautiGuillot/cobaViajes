@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function PaquetesGrid({ apiUrl, dominio }) {
+export default function PaquetesGrid({ apiUrl, dominio, limite = null }) {
   const [paquetes, setPaquetes] = useState([]);
   const [paquetesFiltrados, setPaquetesFiltrados] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -178,7 +178,7 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {paquetesFiltrados.map((p) => (
+        {(limite ? paquetesFiltrados.slice(0, limite) : paquetesFiltrados).map((p) => (
           <div key={p.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2">
             <a href={`/paquete?id=${p.id}`} className="block">
               {/* Imagen del paquete */}
@@ -266,18 +266,20 @@ export default function PaquetesGrid({ apiUrl, dominio }) {
         ))}
       </div>
 
-      {/* Botón para ver más paquetes */}
-      <div className="text-center mt-12">
-        <a
-          href="/paquetes"
-          className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-coba-charcoal bg-coba-yellow hover:opacity-90 transition-colors duration-200"
-        >
-          Ver Todos los Paquetes
-          <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-          </svg>
-        </a>
-      </div>
+      {/* Botón para ver más paquetes - solo si hay límite y más paquetes disponibles */}
+      {limite && paquetesFiltrados.length > limite && (
+        <div className="text-center mt-12">
+          <a
+            href="/paquetes"
+            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-coba-charcoal bg-coba-yellow hover:opacity-90 transition-colors duration-200"
+          >
+            Ver Todos los Paquetes
+            <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      )}
     </div>
   );
 }

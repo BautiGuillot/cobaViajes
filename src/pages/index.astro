@@ -25,7 +25,7 @@ const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
   </div>
   
   <section id="paquetes" class="py-16">
-    <PaquetesGrid client:load apiUrl={API_URL} dominio={DOMINIO} />
+    <PaquetesGrid client:load apiUrl={API_URL} dominio={DOMINIO} limite={6} />
   </section>
   
   <!-- Separador con decoración -->
@@ -36,7 +36,7 @@ const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
   </div>
   
   <section id="cruceros" class="py-16">
-    <CrucerosGrid client:load apiUrl={API_URL} dominio={DOMINIO} />
+    <CrucerosGrid client:load apiUrl={API_URL} dominio={DOMINIO} limite={6} />
   </section>
   
   <!-- Separador con decoración -->

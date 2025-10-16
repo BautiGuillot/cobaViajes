@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function CrucerosGrid({ apiUrl, dominio, mostrarBotonVerTodos = true }) {
+export default function CrucerosGrid({ apiUrl, dominio, mostrarBotonVerTodos = true, limite }) {
   const [cruceros, setCruceros] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -58,7 +58,7 @@ export default function CrucerosGrid({ apiUrl, dominio, mostrarBotonVerTodos = t
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {cruceros.map((crucero) => {
+        {(limite ? cruceros.slice(0, limite) : cruceros).map((crucero) => {
           // Calcular duración en noches
           const duracionNoches = crucero.fechaInicio && crucero.fechaFin
             ? Math.ceil((new Date(crucero.fechaFin) - new Date(crucero.fechaInicio)) / (1000 * 60 * 60 * 24))
@@ -147,8 +147,8 @@ export default function CrucerosGrid({ apiUrl, dominio, mostrarBotonVerTodos = t
         })}
       </div>
 
-      {/* Botón para ver más cruceros */}
-      {mostrarBotonVerTodos && (
+      {/* Botón para ver más cruceros - solo si hay límite y más cruceros disponibles o mostrarBotonVerTodos */}
+      {(mostrarBotonVerTodos && !limite) || (limite && cruceros.length > limite) ? (
         <div className="text-center mt-12">
           <a
             href="/cruceros"
@@ -160,7 +160,7 @@ export default function CrucerosGrid({ apiUrl, dominio, mostrarBotonVerTodos = t
             </svg>
           </a>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
