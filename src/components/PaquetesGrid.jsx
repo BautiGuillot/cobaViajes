@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function PaquetesGrid({ apiUrl, dominio, limite = null }) {
+export default function PaquetesGrid({ apiUrl, dominio, limite }) {
   const [paquetes, setPaquetes] = useState([]);
   const [paquetesFiltrados, setPaquetesFiltrados] = useState([]);
   const [loading, setLoading] = useState(true);
