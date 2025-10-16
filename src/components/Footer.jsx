@@ -79,7 +79,7 @@ export default function Footer() {
 
           {/* Enlaces Rápidos */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+            <h4 className="text-lg font-semibold mb-4 text-coba-yellow">Enlaces Rápidos</h4>
             <ul className="space-y-2">
               <li>
                 <a href="/" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
@@ -87,63 +87,32 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/destinos" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
-                  Destinos
-                </a>
-              </li>
-              <li>
-                <a href="/" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
+                <a href="/paquetes" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
                   Paquetes
                 </a>
               </li>
               <li>
-                <a href="/ofertas" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
-                  Ofertas Especiales
+                <a href="/cruceros" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
+                  Cruceros
                 </a>
               </li>
               <li>
-                <a href="/blog" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
-                  Blog de Viajes
+                <a href="/viajes-15" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
+                  Viajes 15 Días
+                </a>
+              </li>
+              <li>
+                <a href="/nosotros" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
+                  Nosotros
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Servicios */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Servicios</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="/corporativos" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
-                  Viajes Corporativos
-                </a>
-              </li>
-              <li>
-                <a href="/luna-miel" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
-                  Luna de Miel
-                </a>
-              </li>
-              <li>
-                <a href="/grupos" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
-                  Viajes en Grupo
-                </a>
-              </li>
-              <li>
-                <a href="/seguros" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
-                  Seguros de Viaje
-                </a>
-              </li>
-              <li>
-                <a href="/visas" className="text-coba-beige hover:opacity-80 transition-colors duration-200">
-                  Visa y Documentos
-                </a>
-              </li>
-            </ul>
-          </div>
 
           {/* Contacto y Newsletter */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contacto</h4>
+            <h4 className="text-lg font-semibold mb-4 text-coba-yellow">Contacto</h4>
             <div className="space-y-3 mb-6">
               <div className="flex items-center">
                 <span className="mr-2 text-coba-yellow">📲</span>
@@ -200,47 +169,47 @@ export default function Footer() {
                 </a>
               </div>
             </div>
+          </div>
 
-            {/* Newsletter */}
-            <div>
-              <h5 className="text-sm font-semibold mb-2 text-coba-yellow">Newsletter</h5>
-              <p className="text-coba-beige text-xs mb-3">Recibe ofertas exclusivas</p>
-              <form onSubmit={handleNewsletterSubmit} className="space-y-2">
-                {/* Honeypot */}
-                <input type="text" name="company" tabIndex="-1" autoComplete="off" className="hidden" aria-hidden="true" />
+          {/* Newsletter */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4 text-coba-yellow">Newsletter</h4>
+            <p className="text-coba-beige text-sm mb-4">Recibe ofertas exclusivas y las mejores promociones</p>
+            <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+              {/* Honeypot */}
+              <input type="text" name="company" tabIndex="-1" autoComplete="off" className="hidden" aria-hidden="true" />
+              <input
+                type="text"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                placeholder="Tu nombre"
+                className="w-full px-3 py-2 bg-coba-charcoal border border-coba-teal rounded-md text-sm text-coba-cream placeholder-coba-beige focus:outline-none focus:ring-2 focus:ring-coba-yellow focus:border-transparent"
+                required
+              />
+              <div className="flex">
                 <input
-                  type="text"
-                  value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
-                  placeholder="Tu nombre"
-                  className="w-full px-3 py-2 bg-coba-charcoal border border-coba-teal rounded-md text-sm text-coba-cream placeholder-coba-beige focus:outline-none focus:ring-2 focus:ring-coba-yellow focus:border-transparent"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Tu email"
+                  className="flex-1 px-3 py-2 bg-coba-charcoal border border-coba-teal rounded-l-md text-sm text-coba-cream placeholder-coba-beige focus:outline-none focus:ring-2 focus:ring-coba-yellow focus:border-transparent"
                   required
                 />
-                <div className="flex">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Tu email"
-                    className="flex-1 px-3 py-2 bg-coba-charcoal border border-coba-teal rounded-l-md text-sm text-coba-cream placeholder-coba-beige focus:outline-none focus:ring-2 focus:ring-coba-yellow focus:border-transparent"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="px-4 py-2 bg-coba-yellow hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed text-coba-charcoal text-sm font-medium rounded-r-md transition-colors duration-200"
-                  >
-                    {isSubmitting ? "Enviando..." : "Suscribir"}
-                  </button>
-                </div>
-              </form>
-              {isSubscribed && (
-                <p className="text-xs mt-2 text-coba-yellow">¡Te has suscrito exitosamente!</p>
-              )}
-              {errorMessage && (
-                <p className="text-red-400 text-xs mt-2">{errorMessage}</p>
-              )}
-            </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-4 py-2 bg-coba-yellow hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed text-coba-charcoal text-sm font-medium rounded-r-md transition-colors duration-200"
+                >
+                  {isSubmitting ? "Enviando..." : "Suscribir"}
+                </button>
+              </div>
+            </form>
+            {isSubscribed && (
+              <p className="text-xs mt-2 text-coba-yellow">¡Te has suscrito exitosamente!</p>
+            )}
+            {errorMessage && (
+              <p className="text-red-400 text-xs mt-2">{errorMessage}</p>
+            )}
           </div>
         </div>
 
