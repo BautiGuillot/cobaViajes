@@ -7,6 +7,25 @@ export default function SearchForm() {
     fechaRegreso: ''
   });
 
+  // Función para normalizar texto (quitar tildes, convertir a minúsculas, quitar espacios extra, puntos, etc.)
+  const normalizarTexto = (texto) => {
+    if (!texto || typeof texto !== 'string') return '';
+    
+    return texto
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, ' ') // Reemplazar múltiples espacios con uno solo
+      .replace(/[áàäâ]/g, 'a')
+      .replace(/[éèëê]/g, 'e')
+      .replace(/[íìïî]/g, 'i')
+      .replace(/[óòöô]/g, 'o')
+      .replace(/[úùüû]/g, 'u')
+      .replace(/[ñ]/g, 'n')
+      .replace(/[ç]/g, 'c')
+      .replace(/[.,;:!?\-_()]/g, '') // Quitar puntuación
+      .replace(/\s+/g, '') // Quitar todos los espacios
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setSearchData(prev => ({
@@ -25,8 +44,20 @@ export default function SearchForm() {
         return value ? { ...acc, [key]: value } : acc;
       }
 
-      const normalizedValue = value.trim().replace(/\s+/g, ' ');
+      // Para el campo destino, normalizar pero mantener el texto original para la URL
+      if (key === 'destino') {
+        const normalizedValue = normalizarTexto(value);
+        if (!normalizedValue) {
+          return acc;
+        }
+        return {
+          ...acc,
+          [key]: value.trim() // Mantener el texto original para mostrar en la URL
+        };
+      }
 
+      // Para otros campos (fechas), solo limpiar espacios
+      const normalizedValue = value.trim().replace(/\s+/g, ' ');
       if (!normalizedValue) {
         return acc;
       }

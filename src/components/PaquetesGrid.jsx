@@ -6,18 +6,34 @@ export default function PaquetesGrid({ apiUrl, dominio, limite }) {
   const [loading, setLoading] = useState(true);
   const [filtrosAplicados, setFiltrosAplicados] = useState({});
 
+  // Función para normalizar texto (quitar tildes, convertir a minúsculas, quitar espacios extra, puntos, etc.)
+  const normalizarTexto = (texto) => {
+    if (!texto || typeof texto !== 'string') return '';
+    
+    return texto
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, ' ') // Reemplazar múltiples espacios con uno solo
+      .replace(/[áàäâ]/g, 'a')
+      .replace(/[éèëê]/g, 'e')
+      .replace(/[íìïî]/g, 'i')
+      .replace(/[óòöô]/g, 'o')
+      .replace(/[úùüû]/g, 'u')
+      .replace(/[ñ]/g, 'n')
+      .replace(/[ç]/g, 'c')
+      .replace(/[.,;:!?\-_()]/g, '') // Quitar puntuación
+      .replace(/\s+/g, '') // Quitar todos los espacios
+  };
+
   // Función para aplicar filtros
   const aplicarFiltros = (paquetes, filtros) => {
     return paquetes.filter(paquete => {
-      // Filtro por destino (string)
-      const destinoFiltroNormalizado = typeof filtros.destino === 'string'
-        ? filtros.destino.trim()
-        : filtros.destino;
-
-      if (destinoFiltroNormalizado && paquete.destino) {
-        const destinoPaquete = paquete.destino.toLowerCase();
-        const destinoFiltro = destinoFiltroNormalizado.toLowerCase();
-        if (!destinoPaquete.includes(destinoFiltro)) {
+      // Filtro por destino (string) con normalización
+      if (filtros.destino && paquete.destino) {
+        const destinoPaqueteNormalizado = normalizarTexto(paquete.destino);
+        const destinoFiltroNormalizado = normalizarTexto(filtros.destino);
+        
+        if (!destinoPaqueteNormalizado.includes(destinoFiltroNormalizado)) {
           return false;
         }
       }
@@ -57,8 +73,8 @@ export default function PaquetesGrid({ apiUrl, dominio, limite }) {
     const fechaRegresoParam = urlParams.get('fechaRegreso');
 
     if (destinoParam) {
-      const destinoNormalizado = destinoParam.trim().replace(/\s+/g, ' ');
-      if (destinoNormalizado) filtros.destino = destinoNormalizado;
+      const destinoNormalizado = normalizarTexto(destinoParam);
+      if (destinoNormalizado) filtros.destino = destinoParam.trim(); // Mantener el texto original para mostrar
     }
     if (fechaSalidaParam) filtros.fechaSalida = fechaSalidaParam.trim();
     if (fechaRegresoParam) filtros.fechaRegreso = fechaRegresoParam.trim();
