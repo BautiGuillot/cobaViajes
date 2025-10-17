@@ -30,7 +30,7 @@ export default function HeroSection() {
               Explorar Destinos
             </a>
             <a 
-              href="/ofertas" 
+              href="/paquetes" 
               className="border-2 border-coba-cream hover:bg-coba-cream hover:text-coba-royal text-coba-cream px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Ver Ofertas Especiales

@@ -7,7 +7,6 @@ export default function CircuitoForm() {
     telefono: '',
     fechaInicio: '',
     fechaFin: '',
-    diasDisponibles: '',
     viajeros: '2',
     presupuesto: '',
     paises: [],
@@ -18,17 +17,8 @@ export default function CircuitoForm() {
   });
 
   const [paisInput, setPaisInput] = useState('');
+  const [errors, setErrors] = useState({});
 
-  const paisesDisponibles = [
-    'Argentina', 'Brasil', 'Chile', 'Perú', 'Colombia', 'Ecuador', 'Bolivia',
-    'Uruguay', 'Paraguay', 'Venezuela', 'México', 'España', 'Francia', 'Italia',
-    'Alemania', 'Portugal', 'Inglaterra', 'Holanda', 'Bélgica', 'Suiza',
-    'Austria', 'República Checa', 'Hungría', 'Polonia', 'Grecia', 'Turquía',
-    'Egipto', 'Marruecos', 'Sudáfrica', 'Japón', 'China', 'Tailandia',
-    'Vietnam', 'Singapur', 'Malasia', 'Indonesia', 'India', 'Nepal',
-    'Australia', 'Nueva Zelanda', 'Estados Unidos', 'Canadá', 'Cuba',
-    'República Dominicana', 'Jamaica', 'Costa Rica', 'Panamá', 'Guatemala'
-  ];
 
   const actividadesDisponibles = [
     'Turismo cultural', 'Aventura', 'Playa y relax', 'Gastronomía',
@@ -36,12 +26,75 @@ export default function CircuitoForm() {
     'Vida nocturna', 'Deportes', 'Fotografía', 'Meditación y yoga'
   ];
 
+  // Funciones de validación
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    if (!phone) return true; // Teléfono es opcional
+    const phoneRegex = /^[\+]?[0-9\s\-\(\)]{8,}$/;
+    return phoneRegex.test(phone);
+  };
+
+  const validateDates = (fechaInicio, fechaFin) => {
+    if (!fechaInicio || !fechaFin) return true; // Las fechas son requeridas por HTML5
+    const inicio = new Date(fechaInicio);
+    const fin = new Date(fechaFin);
+    return fin > inicio;
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Validar campos requeridos
+    if (!formData.nombre.trim()) {
+      newErrors.nombre = 'El nombre es requerido';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'El email es requerido';
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = 'Ingresa un email válido';
+    }
+
+    if (!formData.telefono.trim()) {
+      newErrors.telefono = 'El teléfono es requerido';
+    } else if (!validatePhone(formData.telefono)) {
+      newErrors.telefono = 'Ingresa un teléfono válido';
+    }
+
+    if (!formData.fechaInicio) {
+      newErrors.fechaInicio = 'La fecha de inicio es requerida';
+    }
+
+    if (!formData.fechaFin) {
+      newErrors.fechaFin = 'La fecha de fin es requerida';
+    }
+
+    if (!validateDates(formData.fechaInicio, formData.fechaFin)) {
+      newErrors.fechaFin = 'La fecha de fin debe ser posterior a la fecha de inicio';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+    
+    // Limpiar error del campo cuando el usuario empiece a escribir
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
   };
 
   const handlePaisAdd = () => {
@@ -73,6 +126,11 @@ export default function CircuitoForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
+    // Validar formulario antes de enviar
+    if (!validateForm()) {
+      return;
+    }
+    
     // Calcular días automáticamente si hay fechas
     let diasCalculados = '';
     if (formData.fechaInicio && formData.fechaFin) {
@@ -91,10 +149,10 @@ export default function CircuitoForm() {
 - Email: ${formData.email}
 - Telefono: ${formData.telefono}
 
-*Fechas y Duracion:*
+*Fechas del Viaje:*
 - Fecha inicio: ${formData.fechaInicio || 'No especificada'}
 - Fecha fin: ${formData.fechaFin || 'No especificada'}
-- Dias disponibles: ${diasCalculados || formData.diasDisponibles || 'No especificados'}
+- Duracion: ${diasCalculados ? `${diasCalculados} dias` : 'No calculada'}
 
 *Viajeros:*
 - Cantidad: ${formData.viajeros} personas
@@ -139,81 +197,97 @@ Hola! Me gustaria solicitar un presupuesto para este circuito personalizado.`;
                 value={formData.nombre}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-white text-coba-charcoal placeholder-coba-teal"
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-white text-coba-charcoal placeholder-coba-teal ${
+                  errors.nombre ? 'border-red-500' : 'border-coba-teal'
+                }`}
                 placeholder="Tu nombre completo"
               />
+              {errors.nombre && (
+                <p className="text-red-500 text-sm mt-1">{errors.nombre}</p>
+              )}
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+              <label className="block text-sm font-medium text-coba-charcoal mb-2">Email *</label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-white text-coba-charcoal placeholder-coba-teal"
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-white text-coba-charcoal placeholder-coba-teal ${
+                  errors.email ? 'border-red-500' : 'border-coba-teal'
+                }`}
                 placeholder="tu@email.com"
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Teléfono</label>
+              <label className="block text-sm font-medium text-coba-charcoal mb-2">Teléfono *</label>
               <input
                 type="tel"
                 name="telefono"
                 value={formData.telefono}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-white text-coba-charcoal placeholder-coba-teal"
+                required
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-white text-coba-charcoal placeholder-coba-teal ${
+                  errors.telefono ? 'border-red-500' : 'border-coba-teal'
+                }`}
                 placeholder="+54 9 11 1234-5678"
               />
+              {errors.telefono && (
+                <p className="text-red-500 text-sm mt-1">{errors.telefono}</p>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Fechas y Duración */}
+        {/* Fechas */}
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Fechas y Duración</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <h3 className="text-xl font-semibold text-coba-charcoal mb-4">Fechas del Viaje</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Fecha de inicio</label>
+              <label className="block text-sm font-medium text-coba-charcoal mb-2">Fecha de inicio *</label>
               <input
                 type="date"
                 name="fechaInicio"
                 value={formData.fechaInicio}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-white text-coba-charcoal placeholder-coba-teal"
+                required
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-white text-coba-charcoal placeholder-coba-teal ${
+                  errors.fechaInicio ? 'border-red-500' : 'border-coba-teal'
+                }`}
               />
+              {errors.fechaInicio && (
+                <p className="text-red-500 text-sm mt-1">{errors.fechaInicio}</p>
+              )}
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Fecha de fin</label>
+              <label className="block text-sm font-medium text-coba-charcoal mb-2">Fecha de fin *</label>
               <input
                 type="date"
                 name="fechaFin"
                 value={formData.fechaFin}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-white text-coba-charcoal placeholder-coba-teal"
+                required
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-white text-coba-charcoal placeholder-coba-teal ${
+                  errors.fechaFin ? 'border-red-500' : 'border-coba-teal'
+                }`}
               />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Días disponibles</label>
-              <input
-                type="number"
-                name="diasDisponibles"
-                value={formData.diasDisponibles}
-                onChange={handleInputChange}
-                min="1"
-                className="w-full px-4 py-3 border border-coba-teal rounded-lg focus:ring-2 focus:ring-coba-yellow focus:border-transparent bg-white text-coba-charcoal placeholder-coba-teal"
-                placeholder="Ej: 15"
-              />
+              {errors.fechaFin && (
+                <p className="text-red-500 text-sm mt-1">{errors.fechaFin}</p>
+              )}
             </div>
           </div>
         </div>
 
         {/* Viajeros y Presupuesto */}
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Viajeros y Presupuesto</h3>
+          <h3 className="text-xl font-semibold text-coba-charcoal mb-4">Viajeros y Presupuesto</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Número de viajeros</label>
+              <label className="block text-sm font-medium text-coba-charcoal mb-2">Número de viajeros</label>
               <select
                 name="viajeros"
                 value={formData.viajeros}
@@ -233,7 +307,7 @@ Hola! Me gustaria solicitar un presupuesto para este circuito personalizado.`;
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Presupuesto aproximado (USD)</label>
+              <label className="block text-sm font-medium text-coba-charcoal mb-2">Presupuesto aproximado (USD)</label>
               <select
                 name="presupuesto"
                 value={formData.presupuesto}
@@ -254,7 +328,7 @@ Hola! Me gustaria solicitar un presupuesto para este circuito personalizado.`;
 
         {/* Destinos */}
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Destinos de Interés</h3>
+          <h3 className="text-xl font-semibold text-coba-charcoal mb-4">Destinos de Interés</h3>
           <div className="space-y-4">
             <div className="flex gap-2">
               <input
@@ -297,10 +371,10 @@ Hola! Me gustaria solicitar un presupuesto para este circuito personalizado.`;
 
         {/* Preferencias */}
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Preferencias</h3>
+          <h3 className="text-xl font-semibold text-coba-charcoal mb-4">Preferencias</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Tipo de alojamiento</label>
+              <label className="block text-sm font-medium text-coba-charcoal mb-2">Tipo de alojamiento</label>
               <select
                 name="tipoAlojamiento"
                 value={formData.tipoAlojamiento}
@@ -318,7 +392,7 @@ Hola! Me gustaria solicitar un presupuesto para este circuito personalizado.`;
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Tipo de transporte</label>
+              <label className="block text-sm font-medium text-coba-charcoal mb-2">Tipo de transporte</label>
               <select
                 name="tipoTransporte"
                 value={formData.tipoTransporte}
@@ -337,7 +411,7 @@ Hola! Me gustaria solicitar un presupuesto para este circuito personalizado.`;
 
         {/* Actividades */}
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Actividades de Interés</h3>
+          <h3 className="text-xl font-semibold text-coba-charcoal mb-4">Actividades de Interés</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {actividadesDisponibles.map((actividad) => (
               <label key={actividad} className="flex items-center space-x-2 cursor-pointer">
@@ -355,7 +429,7 @@ Hola! Me gustaria solicitar un presupuesto para este circuito personalizado.`;
 
         {/* Observaciones */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Observaciones adicionales</label>
+          <label className="block text-sm font-medium text-coba-charcoal mb-2">Observaciones adicionales</label>
           <textarea
             name="observaciones"
             value={formData.observaciones}
