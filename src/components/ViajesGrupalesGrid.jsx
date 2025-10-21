@@ -147,7 +147,7 @@ export default function ViajesGrupalesGrid({ apiUrl, dominio, limite = null }) {
                     {p.precio && p.precio > 0 ? (
                       <>
                         <span className="block text-xs text-gray-800">Precio desde</span>
-                        <span className="text-2xl font-bold text-coba-teal">
+                        <span className="text-2xl font-bold text-coba-charcoal">
                           ${p.precio.toLocaleString('es-ES')}
                         </span>
                         <span className="text-sm text-gray-800 ml-1">por persona</span>
@@ -161,7 +161,7 @@ export default function ViajesGrupalesGrid({ apiUrl, dominio, limite = null }) {
                       </>
                     )}
                   </div>
-                  <div className="text-white bg-coba-teal px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg hover:bg-coba-royal">
+                  <div className="text-coba-charcoal bg-coba-yellow px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg hover:opacity-90">
                     Unirse al Grupo
                   </div>
                 </div>
@@ -176,7 +176,7 @@ export default function ViajesGrupalesGrid({ apiUrl, dominio, limite = null }) {
         <div className="text-center mt-12">
           <a
             href="/viajes-grupales"
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-coba-teal hover:bg-coba-royal transition-colors duration-200"
+            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-coba-charcoal bg-coba-yellow hover:opacity-90 transition-colors duration-200"
           >
             Ver Todos los Viajes Grupales
             <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

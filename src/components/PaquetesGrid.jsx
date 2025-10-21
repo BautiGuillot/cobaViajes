@@ -210,7 +210,7 @@ export default function PaquetesGrid({ apiUrl, dominio, limite }) {
                 )}
                 {/* Badge de viaje grupal */}
                 {p.paqueteGrupal && (
-                  <div className="absolute top-16 left-4 text-white bg-coba-teal px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                  <div className={`absolute left-4 text-white bg-coba-teal px-3 py-1 rounded-full text-sm font-bold shadow-lg ${p.oferta ? 'top-16' : 'top-4'}`}>
                     GRUPAL
                   </div>
                 )}

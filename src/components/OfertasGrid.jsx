@@ -106,7 +106,7 @@ export default function OfertasGrid({ apiUrl, dominio, limite = null }) {
                 
                 {/* Badge de viaje grupal */}
                 {p.paqueteGrupal && (
-                  <div className="absolute top-16 left-4 text-white bg-coba-teal px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                  <div className={`absolute left-4 text-white bg-coba-teal px-3 py-1 rounded-full text-sm font-bold shadow-lg ${p.oferta ? 'top-16' : 'top-4'}`}>
                     GRUPAL
                   </div>
                 )}
@@ -147,7 +147,7 @@ export default function OfertasGrid({ apiUrl, dominio, limite = null }) {
                     {p.precio && p.precio > 0 ? (
                       <>
                         <span className="block text-xs text-gray-800">Precio desde</span>
-                        <span className="text-2xl font-bold text-red-600">
+                        <span className="text-2xl font-bold text-coba-charcoal">
                           ${p.precio.toLocaleString('es-ES')}
                         </span>
                         <span className="text-sm text-gray-800 ml-1">por persona</span>
