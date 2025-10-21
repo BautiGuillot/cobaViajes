@@ -71,10 +71,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <!-- Imagen -->
         <div class="relative">
           <div 
-            class="h-96 rounded-2xl bg-cover bg-center bg-no-repeat shadow-2xl"
-            style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+            class="h-96 rounded-2xl bg-cover bg-center bg-no-repeat shadow-2xl flex items-center justify-center bg-coba-cream"
+            style="background-image: none"
           >
-            <div class="absolute inset-0 bg-gradient-to-t from-coba-charcoal/30 to-transparent rounded-2xl"></div>
+            <img
+              src="/coba-logo.webp"
+              alt="Logo COBÁ Viajes y Turismo"
+              class="max-h-64 w-auto object-contain drop-shadow-md"
+              loading="eager"
+            />
           </div>
         </div>
       </div>
