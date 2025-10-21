@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import OfertasGrid from "../components/OfertasGrid.jsx";
+
+const API_URL = import.meta.env.PUBLIC_API_URL;
+const DOMINIO = import.meta.env.PUBLIC_DOMINIO;
+---
+
+<BaseLayout title="Ofertas Especiales - Coba Viajes">
+  <!-- Hero estilo unificado -->
+  <section class="relative h-[50vh] flex items-center justify-center overflow-hidden">
+    <!-- Imagen de fondo -->
+    <div 
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+    ></div>
+    
+    <!-- Overlay COBÁ -->
+    <div class="absolute inset-0 bg-gradient-to-br from-red-600/70 via-orange-500/60 to-yellow-500/70"></div>
+    
+    <!-- Contenido -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="animate-fade-in">
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-lg">
+          🔥 Ofertas Especiales
+        </h1>
+        <p class="text-lg md:text-2xl mb-6 max-w-4xl mx-auto text-white drop-shadow-md leading-relaxed">
+          ¡No te pierdas nuestras mejores ofertas! Descuentos exclusivos y precios especiales para tu próximo viaje
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#ofertas"
+            class="text-white bg-red-500 px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover:bg-red-600"
+          >
+            Ver Ofertas
+          </a>
+          <a
+            href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Quiero información sobre las ofertas especiales')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="border-2 border-white hover:bg-white hover:text-red-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          >
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separador -->
+  <div class="border-t border-gray-200"></div>
+
+  <section id="ofertas" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <OfertasGrid client:load apiUrl={API_URL} dominio={DOMINIO} limite={null} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in { animation: fade-in 1s ease-out; }
+</style>

@@ -202,6 +202,18 @@ export default function PaquetesGrid({ apiUrl, dominio, limite }) {
                     {p.descuento}% OFF
                   </div>
                 )}
+                {/* Badge de oferta */}
+                {p.oferta && (
+                  <div className="absolute top-4 left-4 text-white bg-red-500 px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                    ¡OFERTA!
+                  </div>
+                )}
+                {/* Badge de viaje grupal */}
+                {p.paqueteGrupal && (
+                  <div className="absolute top-16 left-4 text-white bg-coba-teal px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                    GRUPAL
+                  </div>
+                )}
                 {/* Badge de fechas */}
                 <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 text-coba-charcoal px-3 py-1 rounded-full text-sm font-medium">
                   {p.fechaInicio ? new Date(p.fechaInicio).toLocaleDateString('es-ES', { month: 'short', day: 'numeric' }) : 'Próximamente'}
