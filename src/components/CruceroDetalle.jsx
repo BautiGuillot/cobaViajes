@@ -182,7 +182,7 @@ export default function CruceroDetalle(props) {
               )}
             </div>
             <a
-              href={`https://wa.me/2364379198?text=${encodeURIComponent(`Hola! Me interesa el crucero:\n\n*${crucero.titulo}*\n\nDestino: ${crucero.destino || 'N/A'}${tienePrecio ? `\nPrecio: $${precioFormateado}` : ''}\n\nPodrian darme mas informacion?`)}`}
+              href={`https://wa.me/2364351443?text=${encodeURIComponent(`Hola! Me interesa el crucero:\n\n*${crucero.titulo}*\n\nDestino: ${crucero.destino || 'N/A'}${tienePrecio ? `\nPrecio: $${precioFormateado}` : ''}\n\nPodrian darme mas informacion?`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full inline-flex items-center justify-center px-4 py-3 rounded-lg bg-coba-whatsapp hover:bg-green-600 text-white font-medium transition-colors"

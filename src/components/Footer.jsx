@@ -135,7 +135,7 @@ export default function Footer() {
               <h5 className="text-sm font-semibold mb-3 text-coba-yellow">Síguenos</h5>
               <div className="flex space-x-4">
                 <a 
-                  href="https://wa.me/2364379198" 
+                  href="https://wa.me/2364351443" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-coba-beige hover:opacity-80 transition-colors duration-200"

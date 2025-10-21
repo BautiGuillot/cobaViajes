@@ -179,7 +179,7 @@ Hola! Me gustaria solicitar un presupuesto para este circuito personalizado.`;
     const mensajeCodificado = encodeURIComponent(mensaje);
     
     // Abrir WhatsApp
-    window.open(`https://wa.me/2364379198?text=${mensajeCodificado}`, '_blank');
+    window.open(`https://wa.me/2364351443?text=${mensajeCodificado}`, '_blank');
   };
 
   return (

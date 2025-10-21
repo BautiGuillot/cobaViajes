@@ -182,7 +182,7 @@ export default function Viajes15Grid() {
               </div>
               <div className="flex gap-4">
                 <a
-                  href={`https://wa.me/2364379198?text=${encodeURIComponent(
+                  href={`https://wa.me/2364351443?text=${encodeURIComponent(
                     `Hola! Quiero información sobre el paquete de 15 años: ${selectedPaquete.titulo}`
                   )}`}
                   target="_blank"
@@ -214,7 +214,7 @@ export default function Viajes15Grid() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href={`https://wa.me/2364379198?text=${encodeURIComponent(
+            href={`https://wa.me/2364351443?text=${encodeURIComponent(
               'Hola! Quiero información sobre los viajes de 15 años a Disney y Miami'
             )}`}
             target="_blank"

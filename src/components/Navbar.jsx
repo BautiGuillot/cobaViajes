@@ -125,7 +125,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <div className="hidden lg:block">
             <a
-              href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Quiero cotizar un viaje')}`}
+              href={`https://wa.me/2364351443?text=${encodeURIComponent('Hola! Quiero cotizar un viaje')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-coba-whatsapp hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
@@ -263,7 +263,7 @@ export default function Navbar() {
               {/* CTA Button móvil */}
               <div className="pt-4 border-t border-coba-beige">
                 <a
-                  href={`https://wa.me/2364379198?text=${encodeURIComponent('Hola! Quiero cotizar un viaje')}`}
+                  href={`https://wa.me/2364351443?text=${encodeURIComponent('Hola! Quiero cotizar un viaje')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-coba-whatsapp hover:bg-green-600 text-white block px-3 py-3 rounded-lg text-base font-semibold mt-2 flex items-center justify-center gap-2 shadow-md"
