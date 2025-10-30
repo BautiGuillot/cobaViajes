@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 export default function PaqueteDetalle(props) {
   const { apiUrl, dominio, id } = props ?? {};
   const [paquete, setPaquete] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   useEffect(() => {
     const hostname =
@@ -49,6 +51,16 @@ export default function PaqueteDetalle(props) {
         )
       )
     : null;
+
+  const imagenesHotel = Array.isArray(paquete?.imagenesHotel) ? paquete.imagenesHotel : [];
+  const goPrev = () => {
+    if (!imagenesHotel.length) return;
+    setCurrentImageIndex((prev) => (prev - 1 + imagenesHotel.length) % imagenesHotel.length);
+  };
+  const goNext = () => {
+    if (!imagenesHotel.length) return;
+    setCurrentImageIndex((prev) => (prev + 1) % imagenesHotel.length);
+  };
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -115,16 +127,108 @@ export default function PaqueteDetalle(props) {
           <div className="bg-coba-cream rounded-2xl shadow p-6 md:p-8">
             <h2 className="text-xl font-semibold text-coba-charcoal mb-4">Descripción</h2>
             <p className="text-gray-800 leading-relaxed whitespace-pre-line">{paquete.descripcion}</p>
-            {(paquete.imagenHotel) && (
+            {imagenesHotel.length > 0 && (
               <div className="mt-6">
-                <h3 className="text-lg font-semibold text-coba-charcoal mb-3">Imagen del hotel</h3>
-                <div className="rounded-xl overflow-hidden shadow">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-lg font-semibold text-coba-charcoal">Imágenes del hotel</h3>
+                  <span className="text-sm text-gray-800">{currentImageIndex + 1} / {imagenesHotel.length}</span>
+                </div>
+                <div className="relative rounded-2xl overflow-hidden shadow bg-coba-beige">
+                  <button
+                    type="button"
+                    aria-label="Anterior"
+                    onClick={goPrev}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                      <path fillRule="evenodd" d="M15.78 4.22a.75.75 0 010 1.06L9.06 12l6.72 6.72a.75.75 0 11-1.06 1.06l-7.25-7.25a.75.75 0 010-1.06l7.25-7.25a.75.75 0 011.06 0z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Siguiente"
+                    onClick={goNext}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                      <path fillRule="evenodd" d="M8.22 19.78a.75.75 0 010-1.06L14.94 12 8.22 5.28a.75.75 0 011.06-1.06l7.25 7.25a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0z" clipRule="evenodd" />
+                    </svg>
+                  </button>
                   <img
-                    src={paquete.imagenHotel}
-                    alt={`Hotel para el paquete ${paquete.titulo}`}
-                    className="w-full h-64 object-cover"
+                    src={imagenesHotel[currentImageIndex]}
+                    alt={`Hotel ${paquete.titulo} - imagen ${currentImageIndex + 1}`}
+                    className="w-full h-72 md:h-96 object-cover cursor-zoom-in"
                     loading="lazy"
+                    onClick={() => setIsLightboxOpen(true)}
                   />
+                </div>
+                <div className="mt-3 flex gap-3 overflow-x-auto pb-1">
+                  {imagenesHotel.map((url, index) => (
+                    <button
+                      key={`${url}-${index}`}
+                      type="button"
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`relative rounded-xl overflow-hidden shadow min-w-[96px] w-24 h-20 border ${index === currentImageIndex ? 'border-coba-royal' : 'border-transparent'}`}
+                      aria-label={`Ver imagen ${index + 1}`}
+                    >
+                      <img
+                        src={url}
+                        alt={`Miniatura ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {isLightboxOpen && imagenesHotel.length > 0 && (
+              <div
+                className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+                role="dialog"
+                aria-modal="true"
+                onClick={() => setIsLightboxOpen(false)}
+              >
+                <div className="relative max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
+                  <button
+                    type="button"
+                    aria-label="Cerrar"
+                    onClick={() => setIsLightboxOpen(false)}
+                    className="absolute -top-10 right-0 text-white/80 hover:text-white"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
+                      <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 11-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                  <div className="relative rounded-2xl overflow-hidden">
+                    <button
+                      type="button"
+                      aria-label="Anterior"
+                      onClick={goPrev}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path fillRule="evenodd" d="M15.78 4.22a.75.75 0 010 1.06L9.06 12l6.72 6.72a.75.75 0 11-1.06 1.06l-7.25-7.25a.75.75 0 010-1.06l7.25-7.25a.75.75 0 011.06 0z" clipRule="evenodd" />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Siguiente"
+                      onClick={goNext}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path fillRule="evenodd" d="M8.22 19.78a.75.75 0 010-1.06L14.94 12 8.22 5.28a.75.75 0 011.06-1.06l7.25 7.25a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0z" clipRule="evenodd" />
+                      </svg>
+                    </button>
+                    <img
+                      src={imagenesHotel[currentImageIndex]}
+                      alt={`Hotel ${paquete.titulo} - imagen grande ${currentImageIndex + 1}`}
+                      className="w-full max-h-[80vh] object-contain bg-black"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </div>
             )}
