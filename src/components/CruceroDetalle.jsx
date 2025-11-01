@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 export default function CruceroDetalle(props) {
   const { apiUrl, dominio, id } = props ?? {};
   const [crucero, setCrucero] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   useEffect(() => {
     const hostname =
@@ -21,8 +23,13 @@ export default function CruceroDetalle(props) {
     const safeId = encodeURIComponent(usedId);
     fetch(`${base}/api/public/cruceros/dominio/${safeHost}/crucero/${safeId}`)
       .then((res) => res.json())
-      .then((data) => setCrucero(data))
-      .catch(() => setCrucero(null));
+      .then((data) => {
+        setCrucero(data);
+      })
+      .catch((err) => {
+        console.error('Error al cargar crucero:', err);
+        setCrucero(null);
+      });
   }, [apiUrl, dominio, id]);
 
   if (!crucero)
@@ -49,6 +56,16 @@ export default function CruceroDetalle(props) {
         )
       )
     : null;
+
+  const imagenesCrucero = Array.isArray(crucero?.imagenes) ? crucero.imagenes : [];
+  const goPrev = () => {
+    if (!imagenesCrucero.length) return;
+    setCurrentImageIndex((prev) => (prev - 1 + imagenesCrucero.length) % imagenesCrucero.length);
+  };
+  const goNext = () => {
+    if (!imagenesCrucero.length) return;
+    setCurrentImageIndex((prev) => (prev + 1) % imagenesCrucero.length);
+  };
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -91,6 +108,29 @@ export default function CruceroDetalle(props) {
               {crucero.destino && (
                 <p className="text-white/90 mt-1">{crucero.destino}</p>
               )}
+              {(crucero.puertoSalida || crucero.puertoLlegada) && (
+                <div className="flex flex-wrap gap-3 mt-2">
+                  {crucero.puertoSalida && (
+                    <div className="flex items-center gap-1 text-white/90 text-sm">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="font-medium">{crucero.puertoSalida}</span>
+                    </div>
+                  )}
+                  {crucero.puertoSalida && crucero.puertoLlegada && (
+                    <span className="text-white/70">→</span>
+                  )}
+                  {crucero.puertoLlegada && (
+                    <div className="flex items-center gap-1 text-white/90 text-sm">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="font-medium">{crucero.puertoLlegada}</span>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
             <div className="flex gap-2">
               {duracionNoches && (
@@ -115,21 +155,114 @@ export default function CruceroDetalle(props) {
           <div className="bg-coba-cream rounded-2xl shadow p-6 md:p-8">
             <h2 className="text-xl font-semibold text-coba-charcoal mb-4">Descripción</h2>
             <p className="text-gray-800 leading-relaxed whitespace-pre-line">{crucero.descripcion}</p>
+            {imagenesCrucero.length > 0 && (
+              <div className="mt-6">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-lg font-semibold text-coba-charcoal">Imágenes del crucero</h3>
+                  <span className="text-sm text-gray-800">{currentImageIndex + 1} / {imagenesCrucero.length}</span>
+                </div>
+                <div className="relative rounded-2xl overflow-hidden shadow bg-coba-beige">
+                  <button
+                    type="button"
+                    aria-label="Anterior"
+                    onClick={goPrev}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                      <path fillRule="evenodd" d="M15.78 4.22a.75.75 0 010 1.06L9.06 12l6.72 6.72a.75.75 0 11-1.06 1.06l-7.25-7.25a.75.75 0 010-1.06l7.25-7.25a.75.75 0 011.06 0z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Siguiente"
+                    onClick={goNext}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                      <path fillRule="evenodd" d="M8.22 19.78a.75.75 0 010-1.06L14.94 12 8.22 5.28a.75.75 0 011.06-1.06l7.25 7.25a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                  <img
+                    src={imagenesCrucero[currentImageIndex]}
+                    alt={`Crucero ${crucero.titulo} - imagen ${currentImageIndex + 1}`}
+                    className="w-full h-72 md:h-96 object-cover cursor-zoom-in"
+                    loading="lazy"
+                    onClick={() => setIsLightboxOpen(true)}
+                  />
+                </div>
+                <div className="mt-3 flex gap-3 overflow-x-auto pb-1">
+                  {imagenesCrucero.map((url, index) => (
+                    <button
+                      key={`${url}-${index}`}
+                      type="button"
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`relative rounded-xl overflow-hidden shadow min-w-[96px] w-24 h-20 border ${index === currentImageIndex ? 'border-coba-royal' : 'border-transparent'}`}
+                      aria-label={`Ver imagen ${index + 1}`}
+                    >
+                      <img
+                        src={url}
+                        alt={`Miniatura ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {isLightboxOpen && imagenesCrucero.length > 0 && (
+              <div
+                className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+                role="dialog"
+                aria-modal="true"
+                onClick={() => setIsLightboxOpen(false)}
+              >
+                <div className="relative max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
+                  <button
+                    type="button"
+                    aria-label="Cerrar"
+                    onClick={() => setIsLightboxOpen(false)}
+                    className="absolute -top-10 right-0 text-white/80 hover:text-white"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
+                      <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 11-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                  <div className="relative rounded-2xl overflow-hidden">
+                    <button
+                      type="button"
+                      aria-label="Anterior"
+                      onClick={goPrev}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path fillRule="evenodd" d="M15.78 4.22a.75.75 0 010 1.06L9.06 12l6.72 6.72a.75.75 0 11-1.06 1.06l-7.25-7.25a.75.75 0 010-1.06l7.25-7.25a.75.75 0 011.06 0z" clipRule="evenodd" />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Siguiente"
+                      onClick={goNext}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path fillRule="evenodd" d="M8.22 19.78a.75.75 0 010-1.06L14.94 12 8.22 5.28a.75.75 0 011.06-1.06l7.25 7.25a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0z" clipRule="evenodd" />
+                      </svg>
+                    </button>
+                    <img
+                      src={imagenesCrucero[currentImageIndex]}
+                      alt={`Crucero ${crucero.titulo} - imagen grande ${currentImageIndex + 1}`}
+                      className="w-full max-h-[80vh] object-contain bg-black"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
             
             {/* Información adicional del crucero */}
             <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {crucero.puertoSalida && (
-                <div className="bg-white rounded-lg p-4 shadow-sm">
-                  <h3 className="text-sm font-semibold text-gray-800 mb-1">Puerto de Salida</h3>
-                  <p className="text-coba-charcoal font-medium">{crucero.puertoSalida}</p>
-                </div>
-              )}
-              {crucero.puertoLlegada && (
-                <div className="bg-white rounded-lg p-4 shadow-sm">
-                  <h3 className="text-sm font-semibold text-gray-800 mb-1">Puerto de Llegada</h3>
-                  <p className="text-coba-charcoal font-medium">{crucero.puertoLlegada}</p>
-                </div>
-              )}
               {crucero.fechaInicio && (
                 <div className="bg-white rounded-lg p-4 shadow-sm">
                   <h3 className="text-sm font-semibold text-gray-800 mb-1">Fecha de Inicio</h3>
