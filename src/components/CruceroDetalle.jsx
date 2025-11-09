@@ -102,6 +102,24 @@ export default function CruceroDetalle(props) {
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          {/* Badge de descuento si existe */}
+          {crucero.descuento && (
+            <div className="absolute top-4 right-4 text-coba-charcoal bg-coba-yellow px-3 py-1 rounded-full text-sm font-bold shadow-lg z-10">
+              {crucero.descuento}% OFF
+            </div>
+          )}
+          {/* Badge de oferta */}
+          {crucero.oferta && (
+            <div className="absolute top-4 left-4 text-white bg-red-500 px-3 py-1 rounded-full text-sm font-bold shadow-lg z-10">
+              ¡OFERTA!
+            </div>
+          )}
+          {/* Badge de viaje grupal */}
+          {crucero.paqueteGrupal && (
+            <div className={`absolute left-4 text-white bg-coba-teal px-3 py-1 rounded-full text-sm font-bold shadow-lg z-10 ${crucero.oferta ? 'top-16' : 'top-4'}`}>
+              GRUPAL
+            </div>
+          )}
           <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-end justify-between gap-3">
             <div>
               <h1 className="text-2xl md:text-4xl font-bold text-white drop-shadow">{crucero.titulo}</h1>

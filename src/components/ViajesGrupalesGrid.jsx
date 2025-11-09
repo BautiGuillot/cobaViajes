@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { normalizarTexto } from "../utils/textUtils";
 
 export default function ViajesGrupalesGrid({ apiUrl, dominio, limite = null }) {
   const [paquetes, setPaquetes] = useState([]);
-  const [paquetesGrupales, setPaquetesGrupales] = useState([]);
+  const [cruceros, setCruceros] = useState([]);
+  const [viajesGrupales, setViajesGrupales] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,13 +14,32 @@ export default function ViajesGrupalesGrid({ apiUrl, dominio, limite = null }) {
       return;
     }
     
-    fetch(`${base}/api/public/paquetes/agencia/dominio/${encodeURIComponent(d)}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setPaquetes(data);
-        // Filtrar solo los paquetes grupales
-        const grupales = data.filter(paquete => paquete.paqueteGrupal === true);
-        setPaquetesGrupales(grupales);
+    // Cargar paquetes y cruceros en paralelo
+    Promise.all([
+      fetch(`${base}/api/public/paquetes/agencia/dominio/${encodeURIComponent(d)}`)
+        .then((res) => res.json())
+        .catch(() => []),
+      fetch(`${base}/api/public/cruceros/agencia/dominio/${encodeURIComponent(d)}`)
+        .then((res) => res.json())
+        .catch(() => [])
+    ])
+      .then(([paquetesData, crucerosData]) => {
+        setPaquetes(paquetesData);
+        setCruceros(crucerosData);
+        
+        // Filtrar paquetes grupales
+        const paquetesGrupales = paquetesData
+          .filter(paquete => paquete.paqueteGrupal === true)
+          .map(p => ({ ...p, tipo: 'paquete' }));
+        
+        // Filtrar cruceros grupales
+        const crucerosGrupales = crucerosData
+          .filter(crucero => crucero.paqueteGrupal === true)
+          .map(c => ({ ...c, tipo: 'crucero' }));
+        
+        // Combinar todos los viajes grupales
+        const todosGrupales = [...paquetesGrupales, ...crucerosGrupales];
+        setViajesGrupales(todosGrupales);
       })
       .finally(() => setLoading(false));
   }, [apiUrl, dominio]);
@@ -34,7 +53,7 @@ export default function ViajesGrupalesGrid({ apiUrl, dominio, limite = null }) {
     );
   }
 
-  if (!paquetesGrupales.length) {
+  if (!viajesGrupales.length) {
     return (
       <div className="text-center py-12">
         <div className="text-gray-400 mb-4">
@@ -44,12 +63,20 @@ export default function ViajesGrupalesGrid({ apiUrl, dominio, limite = null }) {
         </div>
         <h3 className="text-lg font-medium text-coba-charcoal mb-2">No hay viajes grupales disponibles</h3>
         <p className="text-gray-800 mb-4">Pronto tendremos increíbles viajes grupales para ti.</p>
-        <a
-          href="/paquetes"
-          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-coba-charcoal bg-coba-yellow hover:opacity-90 transition-colors duration-200"
-        >
-          Ver todos los paquetes
-        </a>
+        <div className="flex gap-4 justify-center">
+          <a
+            href="/paquetes"
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-coba-charcoal bg-coba-yellow hover:opacity-90 transition-colors duration-200"
+          >
+            Ver todos los paquetes
+          </a>
+          <a
+            href="/cruceros"
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-coba-charcoal bg-coba-yellow hover:opacity-90 transition-colors duration-200"
+          >
+            Ver todos los cruceros
+          </a>
+        </div>
       </div>
     );
   }
@@ -65,114 +92,128 @@ export default function ViajesGrupalesGrid({ apiUrl, dominio, limite = null }) {
         </p>
         <div className="mt-4 flex justify-center">
           <span className="px-4 py-2 text-coba-teal bg-coba-teal/10 rounded-full text-sm font-bold">
-            👥 {paquetesGrupales.length} viajes grupales disponibles
+            👥 {viajesGrupales.length} viajes grupales disponibles
           </span>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {(limite ? paquetesGrupales.slice(0, limite) : paquetesGrupales).map((p) => (
-          <div key={p.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2 border-2 border-coba-teal/20">
-            <a href={`/paquete?id=${p.id}`} className="block">
-              {/* Imagen del paquete */}
-              <div className="relative h-64 bg-gradient-to-br from-coba-teal via-coba-royal to-coba-charcoal overflow-hidden">
-                {p.imagenDestino ? (
-                  <img 
-                    src={p.imagenDestino} 
-                    alt={`Imagen del paquete ${p.titulo} - ${p.destino}`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <svg className="w-20 h-20 text-white opacity-60" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                      <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-                    </svg>
+        {(limite ? viajesGrupales.slice(0, limite) : viajesGrupales).map((item) => {
+          const esCrucero = item.tipo === 'crucero';
+          const duracion = esCrucero 
+            ? (item.fechaInicio && item.fechaFin
+                ? Math.ceil((new Date(item.fechaFin) - new Date(item.fechaInicio)) / (1000 * 60 * 60 * 24))
+                : null)
+            : (item.fechaInicio && item.fechaFin
+                ? Math.ceil((new Date(item.fechaFin) - new Date(item.fechaInicio)) / (1000 * 60 * 60 * 24))
+                : null);
+          
+          return (
+            <div key={`${item.tipo}-${item.id}`} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-2 border-2 border-coba-teal/20">
+              <a href={esCrucero ? `/crucero?id=${item.id}` : `/paquete?id=${item.id}`} className="block">
+                {/* Imagen */}
+                <div className="relative h-64 bg-gradient-to-br from-coba-teal via-coba-royal to-coba-charcoal overflow-hidden">
+                  {(esCrucero ? item.imagenUrl : item.imagenDestino) ? (
+                    <img 
+                      src={esCrucero ? item.imagenUrl : item.imagenDestino} 
+                      alt={`Imagen de ${item.titulo} - ${item.destino || ''}`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <svg className="w-20 h-20 text-white opacity-60" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                  
+                  {/* Badge de viaje grupal destacado */}
+                  <div className="absolute top-4 left-4 text-white bg-coba-teal px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                    👥 GRUPAL
                   </div>
-                )}
-                <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-                
-                {/* Badge de viaje grupal destacado */}
-                <div className="absolute top-4 left-4 text-white bg-coba-teal px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                  👥 GRUPAL
-                </div>
-                
-                {/* Badge de descuento si existe */}
-                {p.descuento && (
-                  <div className="absolute top-4 right-4 text-coba-charcoal bg-coba-yellow px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-                    {p.descuento}% OFF
-                  </div>
-                )}
-                
-                {/* Badge de oferta */}
-                {p.oferta && (
-                  <div className="absolute top-16 left-4 text-white bg-red-500 px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-                    ¡OFERTA!
-                  </div>
-                )}
-                
-                {/* Badge de fechas */}
-                <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 text-coba-charcoal px-3 py-1 rounded-full text-sm font-medium">
-                  {p.fechaInicio ? new Date(p.fechaInicio).toLocaleDateString('es-ES', { month: 'short', day: 'numeric' }) : 'Próximamente'}
-                </div>
-              </div>
-
-              {/* Contenido de la tarjeta */}
-              <div className="p-6">
-                <div className="mb-3">
-                  <span className="text-sm text-gray-800 font-medium">{p.destino || 'Destino'}</span>
-                </div>
-                
-                <h3 className="text-xl font-bold text-coba-charcoal mb-3 group-hover:text-gray-800 transition-colors duration-200 line-clamp-2">
-                  {p.titulo}
-                </h3>
-                
-                <div className="flex items-center justify-end mb-4">
-                  {p.fechaInicio && p.fechaFin && (
-                    <div className="text-sm text-gray-800">
-                      <span>
-                        {Math.ceil((new Date(p.fechaFin) - new Date(p.fechaInicio)) / (1000 * 60 * 60 * 24))} días
-                      </span>
+                  
+                  {/* Badge de descuento si existe */}
+                  {item.descuento && (
+                    <div className="absolute top-4 right-4 text-coba-charcoal bg-coba-yellow px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                      {item.descuento}% OFF
+                    </div>
+                  )}
+                  
+                  {/* Badge de oferta */}
+                  {item.oferta && (
+                    <div className="absolute top-16 left-4 text-white bg-red-500 px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                      ¡OFERTA!
+                    </div>
+                  )}
+                  
+                  {/* Badge de fechas */}
+                  {item.fechaInicio && (
+                    <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 text-coba-charcoal px-3 py-1 rounded-full text-sm font-medium">
+                      {new Date(item.fechaInicio).toLocaleDateString('es-ES', { month: 'short', day: 'numeric' })}
                     </div>
                   )}
                 </div>
 
-                <p className="text-gray-800 text-sm mb-6 line-clamp-3 leading-relaxed">
-                  {p.descripcion}
-                </p>
-
-                {/* Precio y botón */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                  <div>
-                    {p.precio && p.precio > 0 ? (
-                      <>
-                        <span className="block text-xs text-gray-800">Precio desde</span>
-                        <span className="text-2xl font-bold text-coba-charcoal">
-                          ${p.precio.toLocaleString('es-ES')}
-                        </span>
-                        <span className="text-sm text-gray-800 ml-1">por persona</span>
-                      </>
-                    ) : (
-                      <>
-                        <span className="block text-sm text-gray-800 mb-1">Precio</span>
-                        <span className="text-lg font-semibold text-coba-charcoal">
-                          Solicitar presupuesto
-                        </span>
-                      </>
+                {/* Contenido de la tarjeta */}
+                <div className="p-6">
+                  <div className="mb-3">
+                    <span className="text-sm text-gray-800 font-medium">{item.destino || 'Destino'}</span>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-coba-charcoal mb-3 group-hover:text-gray-800 transition-colors duration-200 line-clamp-2">
+                    {item.titulo}
+                  </h3>
+                  
+                  <div className="flex items-center justify-end mb-4">
+                    {duracion && (
+                      <div className="text-sm text-gray-800">
+                        <span>{duracion} {esCrucero ? 'noches' : 'días'}</span>
+                      </div>
+                    )}
+                    {esCrucero && item.puertoSalida && (
+                      <div className="text-xs text-gray-800 ml-2">Desde {item.puertoSalida}</div>
                     )}
                   </div>
-                  <div className="text-coba-charcoal bg-coba-yellow px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg hover:opacity-90">
-                    Unirse al Grupo
+
+                  <p className="text-gray-800 text-sm mb-6 line-clamp-3 leading-relaxed">
+                    {item.descripcion}
+                  </p>
+
+                  {/* Precio y botón */}
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                    <div>
+                      {item.precio && item.precio > 0 ? (
+                        <>
+                          <span className="block text-xs text-gray-800">Precio desde</span>
+                          <span className="text-2xl font-bold text-coba-charcoal">
+                            ${item.precio.toLocaleString('es-ES')}
+                          </span>
+                          <span className="text-sm text-gray-800 ml-1">por persona</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="block text-sm text-gray-800 mb-1">Precio</span>
+                          <span className="text-lg font-semibold text-coba-charcoal">
+                            Solicitar presupuesto
+                          </span>
+                        </>
+                      )}
+                    </div>
+                    <div className="text-coba-charcoal bg-coba-yellow px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 group-hover:shadow-lg hover:opacity-90">
+                      Unirse al Grupo
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          </div>
-        ))}
+              </a>
+            </div>
+          );
+        })}
       </div>
 
       {/* Botón para ver más viajes grupales - solo si hay límite y más viajes disponibles */}
-      {limite && paquetesGrupales.length > limite && (
+      {limite && viajesGrupales.length > limite && (
         <div className="text-center mt-12">
           <a
             href="/viajes-grupales"

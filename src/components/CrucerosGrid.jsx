@@ -84,7 +84,24 @@ export default function CrucerosGrid({ apiUrl, dominio, mostrarBotonVerTodos = t
                   </div>
                 )}
                 <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-                
+                {/* Badge de descuento si existe */}
+                {crucero.descuento && (
+                  <div className="absolute top-4 right-4 text-coba-charcoal bg-coba-yellow px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                    {crucero.descuento}% OFF
+                  </div>
+                )}
+                {/* Badge de oferta */}
+                {crucero.oferta && (
+                  <div className="absolute top-4 left-4 text-white bg-red-500 px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                    ¡OFERTA!
+                  </div>
+                )}
+                {/* Badge de viaje grupal */}
+                {crucero.paqueteGrupal && (
+                  <div className={`absolute left-4 text-white bg-coba-teal px-3 py-1 rounded-full text-sm font-bold shadow-lg ${crucero.oferta ? 'top-16' : 'top-4'}`}>
+                    GRUPAL
+                  </div>
+                )}
                 {/* Badge de fecha de inicio */}
                 {crucero.fechaInicio && (
                   <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 text-coba-charcoal px-3 py-1 rounded-full text-sm font-medium">
